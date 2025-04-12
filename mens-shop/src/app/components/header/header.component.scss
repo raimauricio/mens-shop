@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #000000, #4f4f4f); // Preto para cinza fosco
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  font-size: 1.8rem;
+  font-weight: bold;
+
+  .logo-primary {
+    font-family: 'Anton', sans-serif; // fonte forte para "MEN'S"
+    margin-right: 0.3rem;
+  }
+
+  .logo-secondary {
+    font-family: 'Roboto', sans-serif; // fonte mais clean para "shop"
+    font-weight: 300;
+  }
+}
+
+.login-btn {
+  background-color: transparent;
+  border: 1.8px solid white;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
