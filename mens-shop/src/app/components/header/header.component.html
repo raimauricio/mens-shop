@@ -4,7 +4,10 @@
     <span class="logo-secondary">shop</span>
   </div>
 
-  <button class="login-btn" (click)="toggleLogin()">
-    {{ isLoggedIn ? 'Sair' : 'Entrar' }}
-  </button>
+  <div class="header-options">
+    <i class="icone pi pi-shopping-cart"></i>
+    <button class="login-btn" (click)="toggleLogin()">
+      {{ isLoggedIn ? 'Sair' : 'Entrar' }}
+    </button>
+  </div>
 </header>

@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: linear-gradient(to right, #000000, #4f4f4f); // Preto para cinza fosco
+  padding: 1.5rem 2rem;
+  background: linear-gradient(to right, #000000, #4f4f4f);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   color: white;
   width: 100%;
@@ -16,22 +16,20 @@
   font-weight: bold;
 
   .logo-primary {
-    font-family: 'Anton', sans-serif; // fonte forte para "MEN'S"
-    margin-right: 0.3rem;
+    font-family: 'Anton', sans-serif;
   }
 
   .logo-secondary {
-    font-family: 'Roboto', sans-serif; // fonte mais clean para "shop"
-    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
   }
 }
 
 .login-btn {
   background-color: transparent;
-  border: 1.8px solid white;
+  border: 2.8px solid white;
   padding: 0.5rem 1rem;
   color: white;
-  font-weight: bold;
+  font-weight: bolder;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s;
@@ -39,4 +37,15 @@
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
+}
+
+.header-options{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 7.5%;
+}
+
+.pi{
+  font-size: 2rem;
 }
