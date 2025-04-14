@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background: linear-gradient(to right, #000000, #4f4f4f);
+  background: linear-gradient(to right, #171717, #6f6f6f);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   color: white;
   width: 100%;
@@ -17,6 +17,9 @@
 
   .logo-primary {
     font-family: 'Anton', sans-serif;
+    font-size: 2.5rem;
+    margin-right: 0.5rem;
+    color: #64748b;
   }
 
   .logo-secondary {
@@ -24,28 +27,8 @@
   }
 }
 
-.login-btn {
-  background-color: transparent;
-  border: 2.8px solid white;
-  padding: 0.5rem 1rem;
-  color: white;
-  font-weight: bolder;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
 
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-}
-
-.header-options{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 7.5%;
-}
-
-.pi{
+.carrinho{
   font-size: 2rem;
+  margin-right: 0.7rem;
 }

@@ -5,9 +5,21 @@
   </div>
 
   <div class="header-options">
-    <i class="icone pi pi-shopping-cart"></i>
-    <button class="login-btn" (click)="toggleLogin()">
-      {{ isLoggedIn ? 'Sair' : 'Entrar' }}
-    </button>
+
+    <p-button
+      [badge]="itensCarrinho"
+      badgeClass="p-badge-contrast"
+      class="carrinho"
+      icon="pi pi-shopping-cart"
+      [rounded]="true"
+      severity="secondary"
+    />
+    <p-button
+      severity="secondary"
+      [label]="isLoggedIn ? 'Sair' : 'Entrar'"
+      [raised]="true"
+      [plain]="true"
+      (click)="toggleLogin()"
+    />
   </div>
 </header>
