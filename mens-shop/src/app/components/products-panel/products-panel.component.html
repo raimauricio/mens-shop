@@ -1,0 +1,35 @@
+<div class="card">
+  <p-carousel
+  [value]="products"
+  [numVisible]="5"
+  [numScroll]="1"
+  [responsiveOptions]="responsiveOptions">
+    <ng-template let-product pTemplate="item">
+      <div class="border-1 surface-border border-round m-2 p-3">
+          <div class="mb-3">
+            <div class="relative mx-auto">
+              <img
+                style="max-width: 400px;"
+                [src]="product.image"
+                [alt]="product.name"
+                class="w-full border-round"
+              />
+
+            </div>
+          </div>
+          <div class="mb-3 font-medium">
+            {{ product.name }}
+          </div>
+          <div class="flex justify-content-between align-items-center">
+              <div class="mt-0 font-semibold text-xl">
+                {{ product.price | currency:'BRL':'symbol':'1.2-2' }}
+              </div>
+              <span>
+                <p-button alt="adicionar no carrinho" icon="pi pi-shopping-cart" severity="secondary" [outlined]="true"/>
+                <p-button alt="comprar" icon="pi pi-shopping-bag" styleClass="ml-2"/>
+              </span>
+          </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
