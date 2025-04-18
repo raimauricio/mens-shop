@@ -1,0 +1,25 @@
+footer {
+  background: linear-gradient(to right, #171717, #6f6f6f);;
+  color: #fff;
+
+  .logo{
+    color: #64748b;
+  }
+
+  .social-icons {
+    i {
+      font-size: 1.5rem;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .footer-bottom {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 1rem;
+  }
+}
