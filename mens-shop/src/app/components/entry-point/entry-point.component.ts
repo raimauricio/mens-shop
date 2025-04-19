@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-entry-point',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './entry-point.component.html',
   styleUrl: './entry-point.component.scss'
 })

@@ -19,3 +19,14 @@
     font-family: 'Roboto', sans-serif;
   }
 }
+
+a{
+  text-decoration: none;
+  color: #171717;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #171717;
+  }
+}
