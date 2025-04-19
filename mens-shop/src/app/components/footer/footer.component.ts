@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { DividerModule } from 'primeng/divider';
+import { Component } from '@angular/core'
+import { PrimeModule } from '../../shared/prime-module/prime.module';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [DividerModule],
+  imports: [PrimeModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })

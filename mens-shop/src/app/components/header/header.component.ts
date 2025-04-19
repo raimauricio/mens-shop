@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { BadgeModule } from 'primeng/badge';
+import { PrimeModule } from '../../shared/prime-module/prime.module';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ButtonModule],
+  imports: [PrimeModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

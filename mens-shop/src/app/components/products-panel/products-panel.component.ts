@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarouselModule } from 'primeng/carousel';
-import { ButtonModule } from 'primeng/button';
-import { TagModule } from 'primeng/tag';
-import { CardModule } from 'primeng/card';
-import { CommonModule } from '@angular/common';
+import { PrimeModule } from '../../shared/prime-module/prime.module';
 
 interface IProduct {
   id: number;
@@ -19,7 +15,7 @@ interface IProduct {
 @Component({
   selector: 'app-products-panel',
   standalone: true,
-  imports: [CarouselModule, ButtonModule, TagModule, CardModule, CommonModule],
+  imports: [PrimeModule],
   templateUrl: './products-panel.component.html',
   styleUrl: './products-panel.component.scss'
 })
