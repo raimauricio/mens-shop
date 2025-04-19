@@ -1,0 +1,21 @@
+.login-container {
+  background: linear-gradient(to right, #171717, #6f6f6f);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  color:#171717;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+
+  .logo-primary {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.5rem;
+    margin-right: 0.5rem;
+    color: #64748b;
+  }
+
+  .logo-secondary {
+    font-family: 'Roboto', sans-serif;
+  }
+}
