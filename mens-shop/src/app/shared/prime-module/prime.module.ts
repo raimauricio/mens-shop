@@ -1,3 +1,4 @@
+import { BadgeModule } from 'primeng/badge';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DividerModule } from 'primeng/divider';
@@ -25,7 +26,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     DropdownModule,
     CheckboxModule,
     ToolbarModule,
-    SplitButtonModule
+    SplitButtonModule,
+    BadgeModule
   ],
   exports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     DropdownModule,
     CheckboxModule,
     ToolbarModule,
-    SplitButtonModule
+    SplitButtonModule,
+    BadgeModule
   ],
   declarations: []
 })

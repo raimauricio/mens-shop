@@ -6,14 +6,13 @@
 
   <div class="header-options">
 
-    <p-button
-      [badge]="itensCarrinho"
+    <i
+      class="pi pi-shopping-cart text-3xl mr-4"
       badgeClass="p-badge-contrast"
-      class="carrinho"
-      icon="pi pi-shopping-cart"
-      [rounded]="true"
-      severity="secondary"
-    />
+      pBadge
+      [value]="itensCarrinho"
+    >
+    </i>
     <p-button
       severity="secondary"
       [label]="isLoggedIn ? 'Sair' : 'Entrar'"
