@@ -10,5 +10,6 @@ import { PrimeModule } from '../../shared/prime-module/prime.module';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-
+  enviarLink = false;
+  esqueciSenha = false;
 }
