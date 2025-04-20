@@ -1,46 +1,46 @@
 <div class="card">
   <p-carousel
-  [value]="products"
-  [numVisible]="5"
-  [numScroll]="1"
-  [responsiveOptions]="responsiveOptions">
+    [value]="products"
+    [numVisible]="5"
+    [numScroll]="1"
+    [responsiveOptions]="responsiveOptions">
     <ng-template let-product pTemplate="item">
       <div class="border-1 surface-border border-round m-2 p-3">
-          <div class="mb-3">
-            <div class="relative mx-auto">
-              <img
-                style="max-width: 400px;"
-                [src]="product.image"
-                [alt]="product.name"
-                class="w-full border-round"
-              />
-
-            </div>
+        <div class="mb-3">
+          <div class="relative mx-auto">
+            <img
+              style="max-width: 400px;"
+              [src]="product.image"
+              [alt]="product.name"
+              class="w-full border-round"
+            />
           </div>
-          <div class="mb-3 font-medium">
-            {{ product.name }}
-          </div>
-          <div class="flex flex-column sm:flex-row sm:justify-content-between sm:align-items-center">
-            <div class="font-semibold text-xl text-center sm:text-left">
-              {{ product.price | currency:'BRL':'symbol':'1.2-2' }}
-            </div>
-
-            <div class="flex justify-content-center sm:justify-content-end gap-2">
-              <p-button
-                alt="adicionar no carrinho"
-                icon="pi pi-shopping-cart"
-                severity="secondary"
-                [outlined]="true"
-              ></p-button>
-
-              <p-button
-                alt="comprar"
-                icon="pi pi-shopping-bag"
-                styleClass="ml-0 sm:ml-2"
-              ></p-button>
-            </div>
+        </div>
+        <div class="mb-3 font-medium">
+          {{ product.name }}
+        </div>
+        <div class="flex flex-column sm:flex-row sm:justify-content-between sm:align-items-center">
+          <div class="font-semibold text-xl text-center sm:text-left">
+            {{ product.price | currency:'BRL':'symbol':'1.2-2' }}
           </div>
 
+          <div class="flex justify-content-center sm:justify-content-end gap-2">
+            <p-button
+              pTooltip="Adicionar ao carrinho"
+              alt="adicionar no carrinho"
+              icon="pi pi-shopping-cart"
+              severity="secondary"
+              [outlined]="true"
+            ></p-button>
+
+            <p-button
+              pTooltip="Comprar agora"
+              alt="Comprar agora"
+              icon="pi pi-shopping-bag"
+              styleClass="ml-0 sm:ml-2"
+            ></p-button>
+          </div>
+        </div>
       </div>
     </ng-template>
   </p-carousel>
