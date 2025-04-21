@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastreComponent } from './pages/cadastre/cadastre.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'carrinho',
     component: CartComponent,
+  },
+  {
+    path: 'finalizacao',
+    component: CheckoutComponent,
   },
   {
     pathMatch: 'full',
