@@ -3,11 +3,12 @@ import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { BasePageComponent } from '../../components/base-page/base-page.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import * as QRCode from 'qrcode';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [PrimeModule, ReactiveFormsModule, BasePageComponent],
+  imports: [PrimeModule, ReactiveFormsModule, BasePageComponent, CommonModule],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
 })
@@ -40,8 +41,8 @@ export class CheckoutComponent {
     cpf: '',
     email: ''
   };
-
   boletoEnviado = false;
+  modalCartaoAberta = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.formGroup = this.formBuilder.group({

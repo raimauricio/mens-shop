@@ -65,6 +65,7 @@
         <p-button
           label="Cadastrar novo cartão"
           icon="pi pi-plus"
+          (click)="modalCartaoAberta = true"
           class="p-button-sm p-button-text"
         ></p-button>
       </div>
@@ -120,6 +121,42 @@
 
       <p *ngIf="boletoEnviado" class="mt-4 text-green-600">Boleto enviado com sucesso para {{ boleto.email }}.</p>
     </div>
+
+    <p-dialog
+      header="Adicione um novo cartão."
+      [modal]="true"
+      [(visible)]="modalCartaoAberta"
+      [style]="{ width: '70vw', maxWidth: '50rem' }"
+    >
+      <div class="flex flex-column gap-3 mt-2">
+        <div class="flex flex-column md:flex-row align-items-center gap-3">
+          <label for="nomeTitular" class="font-semibold md:w-6rem w-full">Nome Titular</label>
+          <input pInputText id="nomeTitular" class="flex-auto w-full" autocomplete="off" />
+        </div>
+
+        <div class="flex flex-column md:flex-row align-items-center gap-3">
+          <label for="numeroCartao" class="font-semibold md:w-6rem w-full">Número do Cartão</label>
+          <input pInputText id="numeroCartao" class="flex-auto w-full" autocomplete="off" />
+        </div>
+
+        <div class="flex flex-column md:flex-row gap-3">
+          <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+            <label for="validade" class="font-semibold md:w-6rem w-full">Validade</label>
+            <input pInputText id="validade" class="flex-auto w-full" autocomplete="off" />
+          </div>
+
+          <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+            <label for="cvv" class="font-semibold md:w-6rem w-full">CVV</label>
+            <input pInputText id="cvv" class="flex-auto w-full" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="flex justify-content-end gap-2 mt-3">
+          <p-button label="Cancelar" severity="secondary" (onClick)="modalCartaoAberta = false" />
+          <p-button label="Salvar" (onClick)="modalCartaoAberta = false" />
+        </div>
+      </div>
+    </p-dialog>
 
     <div class="flex flex-column sm:flex-row justify-content-between gap-3 mt-5">
       <button

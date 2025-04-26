@@ -13,6 +13,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { DialogModule } from 'primeng/dialog';
+
 
 @NgModule({
   imports: [
@@ -29,7 +31,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     ToolbarModule,
     SplitButtonModule,
     BadgeModule,
-    RadioButtonModule
+    RadioButtonModule,
+    DialogModule
   ],
   exports: [
     CommonModule,
@@ -45,7 +48,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     ToolbarModule,
     SplitButtonModule,
     BadgeModule,
-    RadioButtonModule
+    RadioButtonModule,
+    DialogModule
   ],
   declarations: []
 })
