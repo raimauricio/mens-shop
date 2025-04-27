@@ -31,6 +31,7 @@
               icon="pi pi-shopping-cart"
               severity="secondary"
               [outlined]="true"
+              (click)="adicionarAoCarrinho(product)"
             ></p-button>
 
             <p-button
@@ -38,6 +39,7 @@
               alt="Comprar agora"
               icon="pi pi-shopping-bag"
               styleClass="ml-0 sm:ml-2"
+              (click)="comprar(product)"
             ></p-button>
           </div>
         </div>

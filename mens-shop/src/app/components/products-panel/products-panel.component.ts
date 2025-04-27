@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { PrimeModule } from '../../shared/prime-module/prime.module';
+import { JornadaServiceService } from '../../storage/jornada-service.service';
+import { Router } from '@angular/router';
 
 interface IProduct {
   id: number;
@@ -22,10 +24,11 @@ interface IProduct {
 
 
 export class ProductsPanelComponent implements OnInit {
+  jornadaStorage = inject(JornadaServiceService);
+  routes = inject(Router);
 
   products: IProduct[] = [];
-
-    responsiveOptions: any[] | undefined;
+  responsiveOptions: any[] | undefined;
 
 
   ngOnInit() {
@@ -169,5 +172,14 @@ export class ProductsPanelComponent implements OnInit {
             numScroll: 1
         }
     ];
+  }
+
+  adicionarAoCarrinho(produto: any) {
+    this.jornadaStorage.adicionarItemCarrinho(produto);
+  }
+
+  comprar(produto: any) {
+    this.jornadaStorage.adicionarItemCarrinho(produto);
+    this.routes.navigate(['/carrinho']);
   }
 }

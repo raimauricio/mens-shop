@@ -5,18 +5,17 @@
   </div>
 
   <div class="header-options">
-
     <i
       class="pi pi-shopping-cart text-3xl mr-4"
       badgeClass="p-badge-contrast"
       pBadge
       routerLink="/carrinho"
-      [value]="itensCarrinho"
+      [value]="quantidadeItensCarrinho"
     >
     </i>
     <p-button
       severity="secondary"
-      [label]="isLoggedIn ? 'Sair' : 'Entrar'"
+      [label]="usuarioLogado ? 'Sair' : 'Entrar'"
       [raised]="true"
       [plain]="true"
       (click)="toggleLogin()"
