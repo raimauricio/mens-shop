@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IProduct } from '../interfaces/product.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JornadaServiceService {
   private estaLogado: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  private itensCarrinho: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  private itensCarrinho: BehaviorSubject<IProduct[]> = new BehaviorSubject([]);
 
   getEstaLogado() {
     return this.estaLogado.getValue();
@@ -16,13 +17,13 @@ export class JornadaServiceService {
     return this.itensCarrinho.value.length;
   }
 
-  adicionarItemCarrinho(item: any) {
+  adicionarItemCarrinho(item: IProduct) {
     const itens = this.itensCarrinho.value;
     itens.push(item);
     this.itensCarrinho.next(itens);
   }
 
-  removerItemCarrinho(item: any) {
+  removerItemCarrinho(item: IProduct) {
     const itens = this.itensCarrinho.value.filter(i => i !== item);
     this.itensCarrinho.next(itens);
   }

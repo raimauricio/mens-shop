@@ -14,7 +14,9 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DialogModule } from 'primeng/dialog';
-
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { DialogModule } from 'primeng/dialog';
     SplitButtonModule,
     BadgeModule,
     RadioButtonModule,
-    DialogModule
+    DialogModule,
+    ToastModule,
+    ConfirmDialogModule
   ],
   exports: [
     CommonModule,
@@ -49,7 +53,13 @@ import { DialogModule } from 'primeng/dialog';
     SplitButtonModule,
     BadgeModule,
     RadioButtonModule,
-    DialogModule
+    DialogModule,
+    ToastModule,
+    ConfirmDialogModule
+  ],
+  providers: [
+    MessageService,
+    ConfirmationService
   ],
   declarations: []
 })

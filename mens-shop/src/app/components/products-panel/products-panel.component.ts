@@ -2,184 +2,152 @@ import { Component, OnInit, inject } from '@angular/core';
 import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { JornadaServiceService } from '../../storage/jornada-service.service';
 import { Router } from '@angular/router';
-
-interface IProduct {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-  category: string;
-  rating: number;
-  stock: number;
-}
+import { responsiveOptions } from '../../const/responsive-options.const';
+import { IProduct } from '../../interfaces/product.interface';
+import { FormsModule } from '@angular/forms';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-products-panel',
   standalone: true,
-  imports: [PrimeModule],
+  imports: [PrimeModule, FormsModule],
   templateUrl: './products-panel.component.html',
-  styleUrl: './products-panel.component.scss'
+  styleUrl: './products-panel.component.scss',
 })
 
 
 export class ProductsPanelComponent implements OnInit {
   jornadaStorage = inject(JornadaServiceService);
   routes = inject(Router);
-
+  message = inject(MessageService);
+  confirmation = inject(ConfirmationService);
+  responsiveOptions = responsiveOptions.productPanel;
   products: IProduct[] = [];
-  responsiveOptions: any[] | undefined;
-
 
   ngOnInit() {
     this.products = [
       {
         id: 1,
-        name: 'Product 1',
-        description: 'Description of Product 1',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 100,
-        category: 'Category 1',
-        rating: 4.5,
-        stock: 10
+        nome: 'Product 1',
+        descricao: 'Description of Product 1',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 100,
+        categoria: 'Category 1',
+        tamanhos: [38, 40, 42, 44, 46],
       },
       {
         id: 2,
-        name: 'Product 2',
-        description: 'Description of Product 2',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 150,
-        category: 'Category 2',
-        rating: 4.0,
-        stock: 5
+        nome: 'Product 2',
+        descricao: 'Description of Product 2',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 150,
+        categoria: 'Category 2',
+        tamanhos: [38, 40, 42, 44, 46],
       },
       {
         id: 3,
-        name: 'Product 3',
-        description: 'Description of Product 3',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 200,
-        category: 'Category 3',
-        rating: 5.0,
-        stock: 8
+        nome: 'Product 3',
+        descricao: 'Description of Product 3',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 200,
+        categoria: 'Category 3',
+        tamanhos: [38, 40, 42, 44, 46],
       },
       {
         id: 4,
-        name: 'Product 4',
-        description: 'Description of Product 4',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 250,
-        category: 'Category 4',
-        rating: 3.5,
-        stock: 12
+        nome: 'Product 4',
+        descricao: 'Description of Product 4',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 250,
+        categoria: 'Category 4',
+        tamanhos: [38, 40, 42, 44, 46],
       },
       {
-        id: 1,
-        name: 'Product 1',
-        description: 'Description of Product 1',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 100,
-        category: 'Category 1',
-        rating: 4.5,
-        stock: 10
+        id: 5,
+        nome: 'Product 5',
+        descricao: 'Description of Product 5',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 250,
+        categoria: 'Category 4',
+        tamanhos: [38, 40, 42, 44, 46],
       },
       {
-        id: 2,
-        name: 'Product 2',
-        description: 'Description of Product 2',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 150,
-        category: 'Category 2',
-        rating: 4.0,
-        stock: 5
+        id: 6,
+        nome: 'Product 6',
+        descricao: 'Description of Product 6',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 250,
+        categoria: 'Category 4',
+        tamanhos: [38, 40, 42, 44, 46],
       },
       {
-        id: 3,
-        name: 'Product 3',
-        description: 'Description of Product 3',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 200,
-        category: 'Category 3',
-        rating: 5.0,
-        stock: 8
+        id: 7,
+        nome: 'Product 7',
+        descricao: 'Description of Product 7',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 250,
+        categoria: 'Category 4',
+        tamanhos: [38, 40, 42, 44, 46],
       },
       {
-        id: 4,
-        name: 'Product 4',
-        description: 'Description of Product 4',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 250,
-        category: 'Category 4',
-        rating: 3.5,
-        stock: 12
+        id: 8,
+        nome: 'Product 8',
+        descricao: 'Description of Product 8',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 250,
+        categoria: 'Category 4',
+        tamanhos: [38, 40, 42, 44, 46],
       },
       {
-        id: 1,
-        name: 'Product 1',
-        description: 'Description of Product 1',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 100,
-        category: 'Category 1',
-        rating: 4.5,
-        stock: 10
+        id: 9,
+        nome: 'Product 9',
+        descricao: 'Description of Product 9',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 250,
+        categoria: 'Category 4',
+        tamanhos: [38, 40, 42, 44, 46],
       },
       {
-        id: 2,
-        name: 'Product 2',
-        description: 'Description of Product 2',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 150,
-        category: 'Category 2',
-        rating: 4.0,
-        stock: 5
-      },
-      {
-        id: 3,
-        name: 'Product 3',
-        description: 'Description of Product 3',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 200,
-        category: 'Category 3',
-        rating: 5.0,
-        stock: 8
-      },
-      {
-        id: 4,
-        name: 'Product 4',
-        description: 'Description of Product 4',
-        image: '../../../assets/img/banner/img1.jpg',
-        price: 250,
-        category: 'Category 4',
-        rating: 3.5,
-        stock: 12
+        id: 10,
+        nome: 'Product 10',
+        descricao: 'Description of Product 10',
+        imagem: '../../../assets/img/banner/img1.jpg',
+        preco: 250,
+        categoria: 'Category 4',
+        tamanhos: [38, 40, 42, 44, 46],
       }
-    ]
-
-    this.responsiveOptions = [
-        {
-            breakpoint: '1199px',
-            numVisible: 1,
-            numScroll: 1
-        },
-        {
-            breakpoint: '991px',
-            numVisible: 2,
-            numScroll: 1
-        },
-        {
-            breakpoint: '767px',
-            numVisible: 1,
-            numScroll: 1
-        }
     ];
   }
 
-  adicionarAoCarrinho(produto: any) {
-    this.jornadaStorage.adicionarItemCarrinho(produto);
+  adicionarAoCarrinho(produto: IProduct, comprar = false) {
+    if (produto.tamanhoSelecionado) {
+      this.jornadaStorage.adicionarItemCarrinho(produto);
+      this.message.add({
+        severity: 'success',
+        summary: 'Produto adicionado ao carrinho!',
+        detail: `Produto ${produto.nome} adicionado com sucesso!`,
+        life: 3000
+      });
+      if (comprar) {
+        this.routes.navigate(['/carrinho']);
+      }
+    } else {
+      this.confirmation.confirm({
+        message: 'Selecione um tamanho para o produto!',
+        header: 'Tamanho não selecionado',
+        icon: 'pi pi-exclamation-triangle',
+        acceptLabel: 'Ok',
+        acceptIcon: null,
+        rejectVisible: false,
+      });
+    }
   }
 
-  comprar(produto: any) {
-    this.jornadaStorage.adicionarItemCarrinho(produto);
-    this.routes.navigate(['/carrinho']);
+  comprar(produto: IProduct) {
+    this.adicionarAoCarrinho(produto, true);
+  }
+
+  montaOptions(tamanhos: string[]) {
+    return tamanhos.map(tamanho => ({ name: tamanho, code: tamanho }));
   }
 }
