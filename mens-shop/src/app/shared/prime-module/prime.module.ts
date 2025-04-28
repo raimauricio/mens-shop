@@ -16,6 +16,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MenuModule } from 'primeng/menu';
 import { MessageService, ConfirmationService } from 'primeng/api';
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MessageService, ConfirmationService } from 'primeng/api';
     RadioButtonModule,
     DialogModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MenuModule,
   ],
   exports: [
     CommonModule,
@@ -55,7 +57,8 @@ import { MessageService, ConfirmationService } from 'primeng/api';
     RadioButtonModule,
     DialogModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MenuModule,
   ],
   providers: [
     MessageService,

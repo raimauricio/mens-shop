@@ -5,21 +5,27 @@
   </div>
 
   <div class="header-options">
-    <i
-      class="pi pi-shopping-cart text-3xl mr-4"
-      badgeClass="p-badge-contrast"
-      pBadge
-      routerLink="/carrinho"
-      [value]="quantidadeItensCarrinho"
-    >
-    </i>
-    <p-button
-      severity="secondary"
-      [label]="usuarioLogado ? 'Sair' : 'Entrar'"
-      [raised]="true"
-      [plain]="true"
-      (click)="toggleLogin()"
-      routerLink="/login"
-    />
+    <ng-container *ngIf="!usuarioLogado; else menuUsuarioLogado">
+      <i
+        class="pi pi-shopping-cart text-3xl mr-4"
+        badgeClass="p-badge-contrast"
+        pBadge
+        routerLink="/carrinho"
+        [value]="quantidadeItensCarrinho"
+      >
+      </i>
+      <p-button
+        icon="pi pi-user"
+        severity="secondary"
+        label="Entrar"
+        [raised]="true"
+        [plain]="true"
+        routerLink="/login"
+      />
+    </ng-container>
+    <ng-template #menuUsuarioLogado>
+      <p-menu #menu [model]="itemsMenu" [popup]="true" />
+      <p-button (onClick)="menu.toggle($event)" icon="pi pi-user"/>
+    </ng-template>
   </div>
 </header>

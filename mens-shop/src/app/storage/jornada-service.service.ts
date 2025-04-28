@@ -6,7 +6,7 @@ import { IProduct } from '../interfaces/product.interface';
   providedIn: 'root'
 })
 export class JornadaServiceService {
-  private estaLogado: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private estaLogado: BehaviorSubject<boolean> = new BehaviorSubject(true);
   private itensCarrinho: BehaviorSubject<IProduct[]> = new BehaviorSubject([]);
 
   getEstaLogado() {
@@ -26,6 +26,11 @@ export class JornadaServiceService {
   removerItemCarrinho(item: IProduct) {
     const itens = this.itensCarrinho.value.filter(i => i !== item);
     this.itensCarrinho.next(itens);
+  }
+
+  sair(){
+    this.estaLogado.next(false);
+    this.limparCarrinho();
   }
 
   limparCarrinho() {
