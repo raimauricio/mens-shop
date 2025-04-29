@@ -3,6 +3,7 @@ import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { JornadaServiceService } from '../../storage/jornada-service.service';
 import { MenuItem } from 'primeng/api';
 import { ROTAS } from '../../const/rotas.const';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import { ROTAS } from '../../const/rotas.const';
 })
 export class HeaderComponent {
   rotas = ROTAS;
+  router = inject(Router);
   jornadaStorage = inject(JornadaServiceService);
   itemsMenu: MenuItem[] = [
     {
@@ -39,6 +41,10 @@ export class HeaderComponent {
 
   get usuarioLogado(){
     return this.jornadaStorage.getEstaLogado();
+  }
+
+  irParaHome() {
+    this.router.navigate([ROTAS.HOME]);
   }
 
   sair() {

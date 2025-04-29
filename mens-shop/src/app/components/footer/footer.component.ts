@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { PrimeModule } from '../../shared/prime-module/prime.module';
+import { ROTAS } from '../../const/rotas.const';
 
 @Component({
   selector: 'app-footer',
@@ -9,5 +10,6 @@ import { PrimeModule } from '../../shared/prime-module/prime.module';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
+  rotas = ROTAS;
 
 }

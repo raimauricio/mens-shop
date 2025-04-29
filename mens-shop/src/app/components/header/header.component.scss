@@ -10,10 +10,12 @@
 }
 
 .logo {
+  text-decoration: none;
   display: flex;
   align-items: baseline;
   font-size: 1.8rem;
   font-weight: bold;
+  cursor: pointer;
 
   .logo-primary {
     font-family: 'Anton', sans-serif;
@@ -24,6 +26,7 @@
 
   .logo-secondary {
     font-family: 'Roboto', sans-serif;
+    color: white;
   }
 }
 

@@ -1,8 +1,8 @@
 <header class="header">
-  <div class="logo">
+  <a [routerLink]="rotas.HOME" class="logo">
     <span class="logo-primary">MEN'S</span>
     <span class="logo-secondary">shop</span>
-  </div>
+  </a>
 
   <div class="header-options">
     <ng-container *ngIf="!usuarioLogado; else menuUsuarioLogado">
