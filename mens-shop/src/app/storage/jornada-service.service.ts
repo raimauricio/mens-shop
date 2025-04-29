@@ -28,6 +28,10 @@ export class JornadaServiceService {
     return this.itensCarrinho.value.length;
   }
 
+  getNomeUsuario() {
+    return this.usuario.value?.nome;
+  }
+
   adicionarItemCarrinho(item: IProduct) {
     const itens = this.itensCarrinho.value;
     itens.push(item);

@@ -8,6 +8,9 @@
         </span>
       </div>
     </p-toolbar>
+    <p *ngIf="estaLogado" class="m-3">
+      Olá, sr (a) <span class="font-bold">{{ nomeUsuario }}</span>, o que compraremos hoje ?
+    </p>
     <app-products-panel></app-products-panel>
   </div>
 </app-base-page>
