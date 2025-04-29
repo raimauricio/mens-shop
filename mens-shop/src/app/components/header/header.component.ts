@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { JornadaServiceService } from '../../storage/jornada-service.service';
 import { MenuItem } from 'primeng/api';
+import { ROTAS } from '../../const/rotas.const';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { MenuItem } from 'primeng/api';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  rotas = ROTAS;
   jornadaStorage = inject(JornadaServiceService);
   itemsMenu: MenuItem[] = [
     {

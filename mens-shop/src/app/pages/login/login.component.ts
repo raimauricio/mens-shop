@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   imports: [EntryPointComponent, PrimeModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  providers: [LoginService, JornadaServiceService],
+  providers: [LoginService],
 })
 export class LoginComponent {
   formBuilder = inject(FormBuilder);

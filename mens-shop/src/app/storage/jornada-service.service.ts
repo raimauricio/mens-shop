@@ -7,7 +7,7 @@ import { IUser } from '../interfaces/user.interface';
   providedIn: 'root'
 })
 export class JornadaServiceService {
-  private estaLogado: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  private estaLogado: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private itensCarrinho: BehaviorSubject<IProduct[]> = new BehaviorSubject([]);
   private usuario: BehaviorSubject<IUser> = new BehaviorSubject(null);
 
@@ -15,12 +15,13 @@ export class JornadaServiceService {
     return this.estaLogado.getValue();
   }
 
-  setEstaLogado() {
-    this.estaLogado.next(true);
+  getUser() {
+    return this.usuario.getValue();
   }
 
   setUser(user: IUser) {
     this.usuario.next(user);
+    this.estaLogado.next(true);
   }
 
   getQuantidadeCarrinho() {
