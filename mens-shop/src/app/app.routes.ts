@@ -6,30 +6,32 @@ import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ROTAS } from './const/rotas.const';
 
+const removeBarra = (path: string) => path.replace(/^\//, '');
+
 export const routes: Routes = [
   {
-    path: ROTAS.HOME,
+    path: removeBarra(ROTAS.HOME),
     component: HomeComponent
   },
   {
-    path: ROTAS.LOGIN,
+    path: removeBarra(ROTAS.LOGIN),
     component: LoginComponent,
   },
   {
-    path: ROTAS.CADASTRESE,
+    path: removeBarra(ROTAS.CADASTRESE),
     component: CadastreComponent,
   },
   {
-    path: ROTAS.CARRINHO,
+    path: removeBarra(ROTAS.CARRINHO),
     component: CartComponent,
   },
   {
-    path: ROTAS.CHECKOUT,
+    path: removeBarra(ROTAS.CHECKOUT),
     component: CheckoutComponent,
   },
   {
     pathMatch: 'full',
     path: '**',
-    redirectTo: ROTAS.HOME
+    redirectTo: removeBarra(ROTAS.HOME)
   }
 ];
