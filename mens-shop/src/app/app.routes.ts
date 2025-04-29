@@ -4,31 +4,32 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastreComponent } from './pages/cadastre/cadastre.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ROTAS } from './const/rotas.const';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: ROTAS.HOME,
     component: HomeComponent
   },
   {
-    path: 'login',
+    path: ROTAS.LOGIN,
     component: LoginComponent,
   },
   {
-    path: 'cadastre-se',
+    path: ROTAS.CADASTRESE,
     component: CadastreComponent,
   },
   {
-    path: 'carrinho',
+    path: ROTAS.CARRINHO,
     component: CartComponent,
   },
   {
-    path: 'finalizacao',
+    path: ROTAS.CHECKOUT,
     component: CheckoutComponent,
   },
   {
     pathMatch: 'full',
     path: '**',
-    redirectTo: '/'
+    redirectTo: ROTAS.HOME
   }
 ];

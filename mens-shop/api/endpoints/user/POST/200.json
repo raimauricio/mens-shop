@@ -1,0 +1,39 @@
+{
+  "request": {
+    "headers": [],
+    "query": [],
+    "params": {},
+    "body": {}
+  },
+  "response": {
+    "status": 200,
+    "data":{
+      "id": 1,
+      "nome": "Fulano",
+      "sobrenome": "de Tal",
+      "email": "fulano@email.com.br",
+      "telefone": "(13) 99999-9999",
+      "cartoesCadastrados": [
+        {
+          "numero": "1234 5678 9012 3456",
+          "nome": "FULANO DE TAL",
+          "dataValidade": "12/25",
+          "codigoSeguranca": "123"
+        }
+      ],
+      "endereco": {
+        "cep": "12345-678",
+        "rua": "Rua Exemplo",
+        "numero": 123,
+        "complemento": "Apto 456",
+        "bairro": "Bairro Exemplo",
+        "cidade": "Cidade Exemplo",
+        "estado": "SP"
+      },
+      "compras": [],
+      "carrinhos": []
+
+
+    }
+  }
+}

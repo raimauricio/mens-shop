@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MessageService } from 'primeng/api';
 import { PrimeModule } from './shared/prime-module/prime.module';
 
 @Component({
