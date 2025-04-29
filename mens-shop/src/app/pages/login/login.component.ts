@@ -42,14 +42,15 @@ export class LoginComponent {
           },
           error: (err) => {
             this.notification.confirm({
-              message: 'Erro ao realizar login!',
+              message: 'Erro ao realizar login, tente novamente!',
               header: 'Erro',
               icon: 'pi pi-exclamation-triangle',
               acceptLabel: 'Ok',
               accept: () => {
                 this.enviarLink = false;
                 this.esqueciSenha = false;
-              }
+              },
+              rejectVisible: false,
             });
           }
         });
