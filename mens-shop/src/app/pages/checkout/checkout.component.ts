@@ -4,11 +4,18 @@ import { BasePageComponent } from '../../components/base-page/base-page.componen
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import * as QRCode from 'qrcode';
 import { CommonModule } from '@angular/common';
+import { ResumeCartComponent } from '../../components/resume-cart/resume-cart.component';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [PrimeModule, ReactiveFormsModule, BasePageComponent, CommonModule],
+  imports: [
+    ResumeCartComponent,
+    PrimeModule,
+    ReactiveFormsModule,
+    BasePageComponent,
+    CommonModule
+  ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
 })
@@ -31,6 +38,7 @@ export class CheckoutComponent {
     { tipo: 'debito', nome: 'Débito', icone: 'pi pi-credit-card' },
     { tipo: 'boleto', nome: 'Boleto', icone: 'pi pi-file' }
   ];
+
   formGroup: FormGroup;
   chavePix = 'sua-chave@pix.com.br';
   nomeRecebedor = 'MensShop';

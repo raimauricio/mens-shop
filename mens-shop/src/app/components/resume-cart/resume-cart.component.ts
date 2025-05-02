@@ -1,0 +1,26 @@
+import { Component, inject, OnInit } from '@angular/core';
+import { JornadaServiceService } from '../../storage/jornada-service.service';
+import { IItemCarrinho } from '../../interfaces/product.interface';
+import { CommonModule } from '@angular/common';
+import { PrimeModule } from '../../shared/prime-module/prime.module';
+
+@Component({
+  selector: 'app-resume-cart',
+  standalone: true,
+  imports: [CommonModule, PrimeModule],
+  templateUrl: './resume-cart.component.html',
+  styleUrl: './resume-cart.component.scss'
+})
+export class ResumeCartComponent implements OnInit {
+
+  carrinhoDeCompras: IItemCarrinho[];
+  jornadaService = inject(JornadaServiceService)
+
+  ngOnInit(): void {
+    this.carrinhoDeCompras = this.jornadaService.getMontaCarrinho();
+  }
+
+  getTotal() {
+    return this.carrinhoDeCompras.reduce((acc, item) => acc + item.produto.preco * item.quantidade, 0);
+  }
+}
