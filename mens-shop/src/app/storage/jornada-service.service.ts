@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, retry } from 'rxjs';
 import { IProduct } from '../interfaces/product.interface';
 import { IUser } from '../interfaces/user.interface';
+import { IItemCarrinho } from '../interfaces/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,29 @@ export class JornadaServiceService {
     const itens = this.getItensCarrinho();
     itens.splice(itens.findIndex(itemCarrinho => itemCarrinho === item), quantidade);
     this.itensCarrinho.next(itens);
+  }
+
+  getMontaCarrinho():IItemCarrinho[] {
+    if(!this.getQuantidadeCarrinho()) return [];
+    const itensCarrinho = this.getItensCarrinho();
+    const carrinhoDeCompras: IItemCarrinho[] = [];
+    itensCarrinho.forEach(item => {
+      const itemCarrinho =
+        carrinhoDeCompras.find(
+          itemCarrinho => itemCarrinho.produto.id === item.id &&
+          itemCarrinho.tamanhoSelecionado === item.tamanhoSelecionado.code
+        );
+      if(itemCarrinho) {
+        itemCarrinho.quantidade++;
+      } else {
+        carrinhoDeCompras.push({
+          quantidade: 1,
+          tamanhoSelecionado: item.tamanhoSelecionado.code,
+          produto: item
+        });
+      }
+    });
+    return carrinhoDeCompras;
   }
 
   sair(){

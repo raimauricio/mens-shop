@@ -20,17 +20,16 @@ interface CartItem {
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
   jornadaService = inject(JornadaServiceService);
-  carrinhoDeCompras: IItemCarrinho[] = [];
   rotas = ROTAS;
 
   get estaLogado() {
     return this.jornadaService.getEstaLogado();
   }
 
-  ngOnInit(): void {
-    this.montaCarrinho();
+  get carrinhoDeCompras(): IItemCarrinho[] {
+    return this.jornadaService.getMontaCarrinho();
   }
 
   aumentarQuantidade(index: number): void {
@@ -57,21 +56,5 @@ export class CartComponent implements OnInit {
   concluirCompra() {
     if (!this.estaLogado)
       this.jornadaService.concluirCompra.next(true);
-  }
-
-  montaCarrinho() {
-    const itensCarrinho = this.jornadaService.getItensCarrinho();
-    itensCarrinho.forEach(item => {
-      const itemCarrinho = this.carrinhoDeCompras.find(c => c.produto.id === item.id && c.tamanhoSelecionado === item.tamanhoSelecionado.code);
-      if(itemCarrinho) {
-        itemCarrinho.quantidade++;
-      } else {
-        this.carrinhoDeCompras.push({
-          quantidade: 1,
-          tamanhoSelecionado: item.tamanhoSelecionado.code,
-          produto: item
-        });
-      }
-    });
   }
 }
