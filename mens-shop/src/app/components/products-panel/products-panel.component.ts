@@ -121,7 +121,9 @@ export class ProductsPanelComponent implements OnInit {
 
   adicionarAoCarrinho(produto: IProduct, comprar = false) {
     if (produto.tamanhoSelecionado) {
-      this.jornadaStorage.adicionarItemCarrinho(produto);
+      this.jornadaStorage.adicionarItemCarrinho(
+        {...produto,tamanhoSelecionado: produto.tamanhoSelecionado}
+      );
       this.message.add({
         severity: 'success',
         summary: 'Produto adicionado ao carrinho!',

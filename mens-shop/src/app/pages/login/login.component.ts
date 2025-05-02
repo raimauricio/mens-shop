@@ -38,7 +38,9 @@ export class LoginComponent {
         .subscribe({
           next: (response: IUser) => {
             this.jornadaService.setUser(response);
-            this.route.navigate([ROTAS.HOME]);
+            this.jornadaService.concluirCompra.getValue() ?
+             this.route.navigate([ROTAS.CHECKOUT]) : this.route.navigate([ROTAS.HOME]);
+            this.jornadaService.concluirCompra.next(false);
           },
           error: (err) => {
             this.notification.confirm({

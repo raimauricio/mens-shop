@@ -7,21 +7,24 @@
     <div *ngIf="carrinhoDeCompras.length > 0; else emptyCart">
       <div
         class="flex flex-column gap-4 mb-2"
-        *ngFor="let product of carrinhoDeCompras; let i = index"
+        *ngFor="let item of carrinhoDeCompras; let i = index"
       >
         <div
           class="surface-card border-round shadow-2 p-3 flex flex-column sm:flex-row sm:align-items-center justify-content-between gap-4"
         >
           <div class="flex align-items-center gap-3 w-full sm:w-4">
             <img
-              [src]="product.image"
-              [alt]="product.name"
+              [src]="item.produto.imagem"
+              [alt]="item.produto.nome"
               class="w-5rem h-5rem sm:w-6rem sm:h-6rem border-round"
             />
             <div>
-              <div class="font-bold text-lg text-900">{{ product.name }}</div>
+              <div class="font-bold text-lg text-900">{{ item.produto.nome }}</div>
               <div class="text-sm text-gray-500">
-                R$ {{ product.price.toFixed(2) }}
+                {{ item.produto.preco.toFixed(2) | currency:'BRL':'symbol':'1.2-2' }}
+              </div>
+              <div class="text-sm text-gray-500">
+                Tamanho: {{ item.tamanhoSelecionado }}
               </div>
             </div>
           </div>
@@ -33,7 +36,7 @@
               class="p-button-rounded p-button-text"
               (click)="diminuirQuantidade(i)"
             ></button>
-            <span class="px-3">{{ product.quantity }}</span>
+            <span class="px-3">{{ item.quantidade }}</span>
             <button
               pButton
               icon="pi pi-plus"
@@ -43,7 +46,7 @@
           </div>
 
           <div class="w-full sm:w-2 text-center font-medium">
-            {{ (product.price * product.quantity) | currency:'BRL':'symbol':'1.2-2' }}
+            {{ (item.produto.preco * item.quantidade) | currency:'BRL':'symbol':'1.2-2' }}
           </div>
 
           <div class="text-center sm:text-right">
@@ -71,10 +74,11 @@
           class="p-button-outlined"
         ></button>
         <button
-          routerLink="/finalizacao"
+          [routerLink]="estaLogado ? rotas.CHECKOUT : rotas.LOGIN"
           pButton
-          label="Concluir Compra"
+          [label]="estaLogado ? 'Concluir compra' : 'Faça o login para concluir'"
           class="p-button-primary"
+          (click)="concluirCompra()"
         ></button>
       </div>
     </div>

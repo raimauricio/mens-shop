@@ -10,6 +10,11 @@ export class JornadaServiceService {
   private estaLogado: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private itensCarrinho: BehaviorSubject<IProduct[]> = new BehaviorSubject([]);
   private usuario: BehaviorSubject<IUser> = new BehaviorSubject(null);
+  concluirCompra: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  getItensCarrinho() {
+    return this.itensCarrinho.getValue();
+  }
 
   getEstaLogado() {
     return this.estaLogado.getValue();
@@ -33,13 +38,14 @@ export class JornadaServiceService {
   }
 
   adicionarItemCarrinho(item: IProduct) {
-    const itens = this.itensCarrinho.value;
+    const itens = this.getItensCarrinho();
     itens.push(item);
     this.itensCarrinho.next(itens);
   }
 
-  removerItemCarrinho(item: IProduct) {
-    const itens = this.itensCarrinho.value.filter(i => i !== item);
+  removerItemCarrinho(item: IProduct, quantidade = 1) {
+    const itens = this.getItensCarrinho();
+    itens.splice(itens.findIndex(itemCarrinho => itemCarrinho === item), quantidade);
     this.itensCarrinho.next(itens);
   }
 
