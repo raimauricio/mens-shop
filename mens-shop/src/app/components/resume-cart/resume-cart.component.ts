@@ -20,6 +20,6 @@ export class ResumeCartComponent implements OnInit {
   }
 
   getTotal() {
-    return this.carrinhoDeCompras.reduce((acc, item) => acc + item.produto.preco * item.quantidade, 0);
+    return this.jornadaService.getValorTotalCompras();
   }
 }

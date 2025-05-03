@@ -1,0 +1,144 @@
+<div class="mb-6">
+  <h3 class="text-lg font-semibold mb-3">Forma de pagamento</h3>
+  <div class="card flex justify-content-left">
+    <div class="flex flex-column gap-3">
+      <div *ngFor="let metodo of metodosPagamento" class="field-checkbox">
+        <p-radioButton
+          [inputId]="metodo.tipo"
+          [value]="metodo.tipo"
+          [(ngModel)]="metodoSelecionado"
+          (click)="selecionarMetodo()"
+        />
+        <label [for]="metodo.tipo" class="ml-2">
+          {{ metodo.nome }}
+        </label>
+        <i [class]="metodo.icone + ' text-blue-500 text-xl ml-2'"></i>
+      </div>
+    </div>
+</div>
+
+</div>
+
+<div *ngIf="metodoCartaoSelecionado" class="mb-4">
+  <h3 class="text-lg font-semibold mb-2">Cartões Salvos</h3>
+  <div class="flex flex-column gap-3">
+    <div
+      *ngFor="let cartao of cartoesCadastrados"
+      class="surface-card border-round shadow-1 p-3 flex justify-content-between align-items-center"
+    >
+      <div class="text-sm text-800">
+        {{ cartao.numero.slice(-4)}} - {{ cartao.nome }}
+      </div>
+      <p-button
+        label="Usar"
+        size="small"
+        (click)="selecionarCartao(cartao)"
+        [outlined]="cartaoSelecionado !== cartao"
+        [class.p-button-primary]="cartaoSelecionado === cartao"
+      ></p-button>
+    </div>
+
+    <p-button
+      label="Cadastrar novo cartão"
+      icon="pi pi-plus"
+      (click)="modalCartaoAberto = true"
+      class="p-button-sm p-button-text"
+    ></p-button>
+  </div>
+</div>
+
+<p-dialog
+  header="Adicione um novo cartão."
+  [modal]="true"
+  [(visible)]="modalCartaoAberto"
+  [style]="{ width: '70vw', maxWidth: '50rem' }"
+>
+  <form [formGroup]="formCartao" class="flex flex-column gap-3 mt-2">
+    <div class="flex flex-column md:flex-row align-items-center gap-3">
+      <label for="nomeTitular" class="font-semibold md:w-6rem w-full">Nome Titular</label>
+      <input pInputText formControlName="nomeTitular" id="nomeTitular" class="flex-auto w-full" autocomplete="off" />
+    </div>
+
+    <div class="flex flex-column md:flex-row align-items-center gap-3">
+      <label for="numeroCartao" class="font-semibold md:w-6rem w-full">Número do Cartão</label>
+      <input pInputText formControlName="numeroCartao" id="numeroCartao" class="flex-auto w-full" autocomplete="off" />
+    </div>
+
+    <div class="flex flex-column md:flex-row gap-3">
+      <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+        <label for="validade" class="font-semibold md:w-6rem w-full">Validade</label>
+        <input formControlName="validade" pInputText id="validade" class="flex-auto w-full" autocomplete="off" />
+      </div>
+
+      <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+        <label for="cvv" class="font-semibold md:w-6rem w-full">CVV</label>
+        <input formControlName="cvv" pInputText id="cvv" class="flex-auto w-full" autocomplete="off" />
+      </div>
+    </div>
+
+    <div class="flex justify-content-end gap-2 mt-3">
+      <p-button label="Cancelar" severity="secondary" (onClick)="modalCartaoAberto = false" />
+      <p-button [disabled]="formCartao.invalid" label="Salvar" (onClick)="salvarNovoCartao()" />
+    </div>
+  </form>
+</p-dialog>
+
+<p-dialog
+  header="Dados para emissão do boleto"
+  [modal]="true"
+  [(visible)]="modalBoletoAberto"
+  [style]="{ width: '70vw', maxWidth: '50rem' }"
+>
+  <form [formGroup]="formBoleto">
+    <div class="flex flex-column gap-3 mt-2">
+      <div class="flex flex-column md:flex-row align-items-center gap-3">
+        <label for="nomeCompleto" class="font-semibold md:w-6rem w-full">Nome completo</label>
+        <input pInputText formControlName="nomeCompleto" id="nomeCompleto" class="flex-auto w-full" autocomplete="off" />
+      </div>
+
+      <div class="flex flex-column md:flex-row align-items-center gap-3">
+        <label for="cpf" class="font-semibold md:w-6rem w-full">CPF</label>
+        <input pInputText formControlName="cpf" id="cpf" class="flex-auto w-full" autocomplete="off" />
+      </div>
+
+      <div class="flex flex-column md:flex-row gap-3">
+        <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+          <label for="email" class="font-semibold md:w-6rem w-full">Email</label>
+          <input pInputText formControlName="email" id="email" class="flex-auto w-full" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="flex justify-content-end gap-2 mt-3">
+        <p-button label="Cancelar" severity="secondary" (onClick)="modalBoletoAberto = false" />
+        <p-button [disabled]="formBoleto.invalid" label="Enviar boleto" (onClick)="enviarBoleto()" />
+      </div>
+    </div>
+  </form>
+</p-dialog>
+
+<p-dialog
+  header="Escaneie o codigo ou copie e realize o pagamento com seu app bancário. "
+  [modal]="true"
+  [(visible)]="modalPixAberto"
+  [style]="{ width: '70vw', maxWidth: '50rem' }"
+  class="flex flex-column align-items-center"
+>
+  <div class="flex flex-column gap-3 mt-2">
+    <p class="mb-3 font-medium"></p>
+
+    <img *ngIf="qrCodeDataUrl" [src]="qrCodeDataUrl" alt="QR Code Pix" class="mx-auto w-48 h-48" />
+
+    <p class="mt-3 text-sm text-gray-600 break-words">
+      {{ qrCodePixPayload }}
+    </p>
+
+    <button
+      pButton
+      type="button"
+      label="Copiar código Pix"
+      icon="pi pi-copy"
+      class="mt-2"
+      (click)="copiarCodigoPix()"
+    ></button>
+  </div>
+</p-dialog>

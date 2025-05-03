@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, retry } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { IProduct } from '../interfaces/product.interface';
-import { ICompra, IEndereco, IUser } from '../interfaces/user.interface';
+import { ICartao, IEndereco, IUser } from '../interfaces/user.interface';
 import { IItemCarrinho } from '../interfaces/product.interface';
 
 @Injectable({
@@ -73,7 +73,23 @@ export class JornadaServiceService {
     return carrinhoDeCompras;
   }
 
-  getEnderecoCliente() {
+  getValorTotalCompras(): number {
+    return this.getMontaCarrinho().reduce((acc, item) => acc + item.produto.preco * item.quantidade, 0);
+  }
+
+  getCartoesCadastrados(): ICartao[] {
+    return this.usuario.value?.cartoesCadastrados || null;
+  }
+
+  adicionarCartao(cartao: ICartao) {
+    const usuario = this.usuario.getValue();
+    if(usuario) {
+      usuario.cartoesCadastrados.push(cartao);
+      this.usuario.next(usuario);
+    }
+  }
+
+  getEnderecoCliente(): IEndereco[] {
     return this.usuario.value?.enderecos || null;
   }
 
