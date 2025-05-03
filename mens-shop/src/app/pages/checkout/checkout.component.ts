@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { BasePageComponent } from '../../components/base-page/base-page.component';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import * as QRCode from 'qrcode';
-import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ResumeCartComponent } from '../../components/resume-cart/resume-cart.component';
+import { DeliveryComponent } from '../../components/delivery/delivery.component';
+import { PaymentComponent } from '../../components/payment/payment.component';
+import { ROTAS } from '../../const/rotas.const';
+import { JornadaServiceService } from '../../storage/jornada-service.service';
+import { Router } from '@angular/router';
+
+interface ICheckoutStep {
+  nextStepLabel: string;
+  previousStepLabel: string;
+  validityCheck: boolean;
+  nextAction: Function;
+  previousAction: Function;
+}
 
 @Component({
   selector: 'app-checkout',
@@ -14,92 +25,76 @@ import { ResumeCartComponent } from '../../components/resume-cart/resume-cart.co
     PrimeModule,
     ReactiveFormsModule,
     BasePageComponent,
-    CommonModule
+    DeliveryComponent,
+    PaymentComponent
   ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
 })
-export class CheckoutComponent {
-  cartItems = [
-    { name: 'Camisa Polo', price: 100, quantity: 2 },
-    { name: 'Bermuda Jeans', price: 150, quantity: 1 },
-  ];
-  selectedPayment: string = '';
-  selectedCard: any = null;
+export class CheckoutComponent implements OnInit{
+  formaRecebimentoAdicionada = false;
+  formaPagamentoAdicionada = false;
+  jornadaService = inject(JornadaServiceService);
+  rotas = ROTAS;
+  router = inject(Router);
+  stepCheckout = 1;
 
-  savedCards = [
-    { id: 1, name: 'Visa', lastDigits: '1234' },
-    { id: 2, name: 'Mastercard', lastDigits: '5678' },
-  ];
-
-  metodosPagamento = [
-    { tipo: 'pix', nome: 'Pix', icone: 'pi pi-qrcode' },
-    { tipo: 'credito', nome: 'Crédito', icone: 'pi pi-credit-card' },
-    { tipo: 'debito', nome: 'Débito', icone: 'pi pi-credit-card' },
-    { tipo: 'boleto', nome: 'Boleto', icone: 'pi pi-file' }
-  ];
-
-  formGroup: FormGroup;
-  chavePix = 'sua-chave@pix.com.br';
-  nomeRecebedor = 'MensShop';
-  cidade = 'Santos';
-  qrCodeDataUrl: string = '';
-  boleto = {
-    nome: '',
-    cpf: '',
-    email: ''
-  };
-  boletoEnviado = false;
-  modalCartaoAberta = false;
-
-  constructor(private formBuilder: FormBuilder) {
-    this.formGroup = this.formBuilder.group({
-      selectedCategory: [''],
-    })
+  ngOnInit(): void {
+    this.validaUsuarioLogado();
   }
 
-  selecionarMetodo(metodo: any) {
-    this.selectedPayment = metodo;
-    if (metodo === 'pix') {
-      this.gerarQrCodePix();
+  get stepData(): ICheckoutStep{
+    switch (this.stepCheckout) {
+      case 1:
+        return {
+          nextStepLabel: 'Ir para forma de pagamento',
+          previousStepLabel: 'Voltar para o carrinho',
+          validityCheck: !this.formaRecebimentoAdicionada,
+          previousAction: () => this.router.navigate([this.rotas.CARRINHO]),
+          nextAction: () => this.stepCheckout = 2
+        }
+      case 2:
+        return {
+          nextStepLabel: 'Ir para revisão de compra',
+          previousStepLabel: 'Revisar dados de entrega',
+          validityCheck: !this.formaPagamentoAdicionada,
+          previousAction: () => this.stepCheckout = 1,
+          nextAction: () => this.stepCheckout = 3
+        }
+      case 3:
+        return {
+          nextStepLabel: 'Finalizar compra',
+          previousStepLabel: 'Revisar forma de pagamento',
+          validityCheck: true,
+          previousAction: () => this.stepCheckout = 2,
+          nextAction: () => this.finalizarCompra()
+        }
+      default:
+        return {
+          nextStepLabel: '',
+          previousStepLabel: '',
+          validityCheck: false,
+          previousAction: () => {},
+          nextAction: () => {}
+        };
     }
   }
 
-  getTotal() {
-    return this.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  finalizarCompra() {
+    console.log('Compra finalizada!');
   }
 
-  selectCard(card: any) {
-    this.selectedCard = card;
-  }
-
-  get qrCodePixPayload(): string {
-    const valorFormatado = this.getTotal().toFixed(2).replace('.', '');
-    const payload = `00020126440014br.gov.bcb.pix0114${this.chavePix}520400005303986540${valorFormatado}5802BR5913${this.nomeRecebedor}6009${this.cidade}62070503***6304`;
-    return payload;
-  }
-
-  async gerarQrCodePix() {
-    try {
-      this.qrCodeDataUrl = await QRCode.toDataURL(this.qrCodePixPayload, {
-        width: 256,
-        margin: 2,
-      });
-    } catch (err) {
-      console.error('Erro ao gerar QR Code', err);
+  validaUsuarioLogado() {
+    if(!this.jornadaService.getEstaLogado() || this.jornadaService.getQuantidadeCarrinho() === 0) {
+      this.router.navigate([this.rotas.LOGIN]);
     }
   }
 
-  copiarCodigoPix() {
-    navigator.clipboard.writeText(this.qrCodePixPayload).then(() => {
-      alert('Código Pix copiado!');
-    });
+  recebeFormarecebimento(event: boolean) {
+    this.formaRecebimentoAdicionada = event;
   }
 
-  enviarBoleto() {
-    const { nome, cpf, email } = this.boleto;
-    setTimeout(() => {
-      this.boletoEnviado = true;
-    }, 1000);
+  recebeFormaPagamento(event: boolean) {
+    this.formaPagamentoAdicionada = event;
   }
 }

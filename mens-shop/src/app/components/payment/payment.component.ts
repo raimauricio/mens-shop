@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import * as QRCode from 'qrcode';
@@ -14,6 +14,7 @@ import { ICartao } from '../../interfaces/user.interface';
   styleUrl: './payment.component.scss'
 })
 export class PaymentComponent {
+  @Output() formaPagamentoAdicionada = new EventEmitter<boolean>();
   jornadaService = inject(JornadaServiceService);
   formBuilder = inject(FormBuilder);
   confirmationService = inject(ConfirmationService);
@@ -91,6 +92,7 @@ export class PaymentComponent {
         width: 256,
         margin: 2,
       });
+      this.formaPagamentoAdicionada.emit(true);
     } catch (err) {
       this.confirmationService.confirm({
         message: `Não foi possível gerar o QR Code. Tente novamente mais tarde.`,
@@ -107,6 +109,7 @@ export class PaymentComponent {
 
   selecionarCartao(cartao: ICartao) {
     this.cartaoSelecionado = cartao;
+    this.formaPagamentoAdicionada.emit(true);
   }
 
   salvarNovoCartao() {
@@ -119,7 +122,7 @@ export class PaymentComponent {
       };
       this.jornadaService.adicionarCartao(cartao);
       this.modalCartaoAberto = false;
-      this.cartaoSelecionado = cartao;
+      this.selecionarCartao(cartao);
     }
   }
 
@@ -148,6 +151,7 @@ export class PaymentComponent {
         },
         rejectVisible: false,
       });
+      this.formaPagamentoAdicionada.emit(true);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JornadaServiceService } from '../../storage/jornada-service.service';
@@ -12,10 +12,9 @@ import { IEndereco } from '../../interfaces/user.interface';
   styleUrl: './delivery.component.scss'
 })
 export class DeliveryComponent {
+  @Output() formaRecebimentoAdicionada = new EventEmitter<boolean>();
   jornadaStorage = inject(JornadaServiceService);
   formBuilder = inject(FormBuilder);
-  metodoSelecionadao = null;
-  lojaSelecionada = null;
   metodosDeRecebimento = [
     { tipo: 'retirada', nome: 'Retirada em loja', icone: 'pi pi-shop' },
     { tipo: 'entrega', nome: 'Entrega', icone: 'pi pi-truck' }
@@ -25,6 +24,9 @@ export class DeliveryComponent {
     { id: 2, nome: 'Loja São Paulo', endereco: 'Av. Paulista, 456' },
     { id: 3, nome: 'Loja Rio de Janeiro', endereco: 'Av. Atlântica, 789' }
   ];
+  metodoSelecionadao = null;
+  lojaSelecionada = null;
+  enderecoSelecionado: IEndereco = null;
   modalNovoEndereco = false;
   formNovoEndereco: FormGroup = this.formBuilder.group({
     logradouro: ['', Validators.required],
@@ -42,13 +44,26 @@ export class DeliveryComponent {
 
   cadastrarEndereco() {
     if(this.formNovoEndereco.valid) {
+      this.jornadaStorage.setEnderecoCliente(this.formNovoEndereco.value);
       this.modalNovoEndereco = false;
       this.formNovoEndereco.reset();
-      this.jornadaStorage.setEnderecoCliente(this.formNovoEndereco.value);
+      this.formaRecebimentoAdicionada.emit(true);
     }
+  }
+
+  selecionaMetodo(){
+    this.lojaSelecionada = null;
+    this.formaRecebimentoAdicionada.emit(false);
+  }
+
+  selecionaLoja() {
+    console.log(this.lojaSelecionada);
+    this.formaRecebimentoAdicionada.emit(true);
   }
 
   selecionaEndereco(endereco: IEndereco) {
     console.log(endereco);
+    this.enderecoSelecionado = endereco;
+    this.formaRecebimentoAdicionada.emit(true);
   }
 }
