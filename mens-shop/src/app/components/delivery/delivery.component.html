@@ -1,0 +1,127 @@
+<h3 class="text-lg font-semibold mb-5">Forma de recebimento</h3>
+<div class="card flex justify-content-left">
+  <div class="flex flex-wrap gap-3">
+    <div *ngFor="let metodo of metodosDeRecebimento" class="field-checkbox">
+      <p-radioButton
+        name="tipoDelivery"
+        [inputId]="metodo.tipo"
+        [(ngModel)]="metodoSelecionadao"
+        [value]="metodo.tipo"
+      />
+      <label [for]="metodo.tipo" class="ml-2">
+        {{ metodo.nome }}
+      </label>
+      <i [class]="metodo.icone + ' text-blue-500 text-xl ml-2'"></i>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="metodoSelecionadao === 'retirada'">
+  <div class="card flex justify-content-left">
+    <div class="flex flex-column gap-3 mb-5">
+      <h4 class="text mb-3">Selecione a loja mais próxima de você:</h4>
+      <div *ngFor="let loja of lojas" class="field-checkbox ">
+        <p-radioButton
+          name="loja"
+          [inputId]="loja.id.toString()"
+          [(ngModel)]="lojaSelecionada"
+          [value]="loja"
+        />
+        <label [for]="loja.id" class="ml-2">
+          {{ loja.nome }}
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="metodoSelecionadao === 'entrega'">
+  <div *ngIf="enderecosCadastrados?.length">
+    <h3 class="text-lg font-semibold mb-7">Endereços cadastrados</h3>
+    <div class="flex flex-column gap-3">
+      <div
+        *ngFor="let endereco of enderecosCadastrados, let i = index"
+        class="surface-card border-round shadow-1 p-3 flex justify-content-between align-items-center"
+      >
+        <div class="text-sm text-800">
+          Endereço: {{ endereco.logradouro }}, {{ endereco.numero }} - {{ endereco.bairro }}
+          <br />
+          {{ endereco.cidade }}, {{ endereco.estado }} - {{ endereco.cep }}
+          <br />
+        </div>
+        <p-button
+          label="enviar para este endereço"
+          icon="pi pi-check"
+          size="small"
+          (onClick)="selecionaEndereco(endereco)"
+          [outlined]="endereco === enderecosCadastrados[i]"
+          [class.p-button-primary]="endereco === enderecosCadastrados[i]"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+  <div class="mt-5">
+    <p-button
+      label="Cadastrar novo endereço"
+      icon="pi pi-plus"
+      class="p-button-sm p-button-text"
+      (onClick)="modalNovoEndereco = true"
+    ></p-button>
+  </div>
+</ng-container>
+
+<p-dialog
+  header="Cadastre um novo endereco."
+  [modal]="true"
+  [(visible)]="modalNovoEndereco"
+  [style]="{ width: '70vw', maxWidth: '50rem' }"
+>
+  <form [formGroup]="formNovoEndereco">
+    <div class="flex flex-column gap-3 mt-2">
+      <div class="flex flex-column md:flex-row gap-3">
+        <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+          <label for="cep" class="font-semibold md:w-6rem w-full">CEP</label>
+          <input formControlName="cep" pInputText id="cep" class="flex-auto w-full" autocomplete="off" />
+        </div>
+
+        <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+          <label for="logradouro" class="font-semibold md:w-6rem w-full">Logradouro</label>
+          <input formControlName="logradouro" pInputText id="logradouro" class="flex-auto w-full" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="flex flex-column md:flex-row gap-3">
+        <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+          <label for="numero" class="font-semibold md:w-6rem w-full">Numero</label>
+          <input formControlName="numero" pInputText id="numero" class="flex-auto w-full" autocomplete="off" />
+        </div>
+
+        <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+          <label for="complemento" class="font-semibold md:w-6rem w-full">Complemento</label>
+          <input formControlName="complemento" pInputText id="complemento" class="flex-auto w-full" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="flex flex-column md:flex-row gap-3">
+        <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+          <label for="cidade" class="font-semibold md:w-6rem w-full">Cidade</label>
+          <input formControlName="cidade" pInputText id="cidade" class="flex-auto w-full" autocomplete="off" />
+        </div>
+
+        <div class="flex flex-column md:flex-row align-items-center flex-1 gap-3">
+          <label for="cidade" class="font-semibold md:w-6rem w-full">Estado</label>
+          <input formControlName="estado" pInputText id="cidade" class="flex-auto w-full" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="flex justify-content-end gap-2 mt-3">
+        <p-button label="Cancelar" severity="secondary" (onClick)="modalNovoEndereco = false" />
+        <p-button
+          label="Salvar"
+          (onClick)="cadastrarEndereco()"
+        />
+      </div>
+    </div>
+  </form>
+
+</p-dialog>

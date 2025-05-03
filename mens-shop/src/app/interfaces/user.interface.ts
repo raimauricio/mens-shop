@@ -7,7 +7,7 @@ export interface IUser {
   email: string;
   telefone: string;
   cartoesCadastrados: ICartao[];
-  endereco: IEndereco;
+  enderecos: IEndereco[];
   compras: ICompra[];
   carrinho: IProduct[];
 }
@@ -24,9 +24,9 @@ export interface IEndereco {
   estado: string;
   cidade: string;
   bairro: string;
-  rua: string;
+  logradouro: string;
   numero: string;
-  pais: string;
+  complemento?: string;
 }
 
 export interface ICompra {

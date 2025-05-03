@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, retry } from 'rxjs';
 import { IProduct } from '../interfaces/product.interface';
-import { IUser } from '../interfaces/user.interface';
+import { ICompra, IEndereco, IUser } from '../interfaces/user.interface';
 import { IItemCarrinho } from '../interfaces/product.interface';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { IItemCarrinho } from '../interfaces/product.interface';
 export class JornadaServiceService {
   private estaLogado: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private itensCarrinho: BehaviorSubject<IProduct[]> = new BehaviorSubject([]);
-  private usuario: BehaviorSubject<IUser> = new BehaviorSubject(null);
+  private usuario: BehaviorSubject<IUser> = new BehaviorSubject(null);;
   concluirCompra: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   getItensCarrinho() {
@@ -71,6 +71,18 @@ export class JornadaServiceService {
       }
     });
     return carrinhoDeCompras;
+  }
+
+  getEnderecoCliente() {
+    return this.usuario.value?.enderecos || null;
+  }
+
+  setEnderecoCliente(endereco: IEndereco) {
+    const usuario = this.usuario.getValue();
+    if(usuario) {
+      usuario.enderecos.push(endereco);
+      this.usuario.next(usuario);
+    }
   }
 
   sair(){
