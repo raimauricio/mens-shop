@@ -21,15 +21,17 @@
           "codigoSeguranca": "123"
         }
       ],
-      "endereco": {
-        "cep": "12345-678",
-        "rua": "Rua Exemplo",
-        "numero": 123,
-        "complemento": "Apto 456",
-        "bairro": "Bairro Exemplo",
-        "cidade": "Cidade Exemplo",
-        "estado": "SP"
-      },
+      "enderecos": [
+        {
+          "cep": "12345-678",
+          "logradouro": "Rua Exemplo",
+          "numero": 123,
+          "complemento": "Apto 456",
+          "bairro": "Bairro Exemplo",
+          "cidade": "Cidade Exemplo",
+          "estado": "SP"
+        }
+      ],
       "compras": [],
       "carrinhos": []
 
