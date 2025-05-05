@@ -1,0 +1,830 @@
+{
+  "request": {
+  "headers": [],
+  "query": [],
+  "params": {},
+  "body": {}
+  },
+  "response": {
+  "status": 200,
+  "data":
+  [
+    {
+    "codigo_produto": 180470,
+    "categoria": "bermuda",
+    "tamanho": "XGG",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Calvin Klein",
+    "preco": 486.26
+    },
+    {
+    "codigo_produto": 805194,
+    "categoria": "bermuda",
+    "tamanho": "GG",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Lacoste",
+    "preco": 157.65
+    },
+    {
+    "codigo_produto": 785907,
+    "categoria": "camisa",
+    "tamanho": "G",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Zara",
+    "preco": 151.71
+    },
+    {
+    "codigo_produto": 510980,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Reserva",
+    "preco": 183.25
+    },
+    {
+    "codigo_produto": 942318,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Nike",
+    "preco": 65.39
+    },
+    {
+    "codigo_produto": 274902,
+    "categoria": "bermuda",
+    "tamanho": "P",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Nike",
+    "preco": 381.18
+    },
+    {
+    "codigo_produto": 830070,
+    "categoria": "bermuda",
+    "tamanho": "P",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Zara",
+    "preco": 212.49
+    },
+    {
+    "codigo_produto": 302608,
+    "categoria": "cueca",
+    "tamanho": "GG",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Nike",
+    "preco": 457.06
+    },
+    {
+    "codigo_produto": 143262,
+    "categoria": "cueca",
+    "tamanho": "P",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Lacoste",
+    "preco": 367.82
+    },
+    {
+    "codigo_produto": 672933,
+    "categoria": "cueca",
+    "tamanho": "P",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Nike",
+    "preco": 98.74
+    },
+    {
+    "codigo_produto": 520474,
+    "categoria": "camisa",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Reserva",
+    "preco": 186.32
+    },
+    {
+    "codigo_produto": 176586,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Nike",
+    "preco": 171.12
+    },
+    {
+    "codigo_produto": 882420,
+    "categoria": "calça",
+    "tamanho": "P",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Zara",
+    "preco": 143.82
+    },
+    {
+    "codigo_produto": 223838,
+    "categoria": "bermuda",
+    "tamanho": "G",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Nike",
+    "preco": 202.94
+    },
+    {
+    "codigo_produto": 151237,
+    "categoria": "cueca",
+    "tamanho": "P",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Nike",
+    "preco": 251.63
+    },
+    {
+    "codigo_produto": 788883,
+    "categoria": "camisa",
+    "tamanho": "M",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Reserva",
+    "preco": 76.47
+    },
+    {
+    "codigo_produto": 798249,
+    "categoria": "calça",
+    "tamanho": "M",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Calvin Klein",
+    "preco": 489.1
+    },
+    {
+    "codigo_produto": 886437,
+    "categoria": "cueca",
+    "tamanho": "GG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Zara",
+    "preco": 90.24
+    },
+    {
+    "codigo_produto": 654202,
+    "categoria": "cueca",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Reserva",
+    "preco": 437.58
+    },
+    {
+    "codigo_produto": 273996,
+    "categoria": "camisa",
+    "tamanho": "GG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Zara",
+    "preco": 220.94
+    },
+    {
+    "codigo_produto": 193010,
+    "categoria": "bermuda",
+    "tamanho": "P",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Calvin Klein",
+    "preco": 145.87
+    },
+    {
+    "codigo_produto": 232658,
+    "categoria": "calça",
+    "tamanho": "GG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Zara",
+    "preco": 301.23
+    },
+    {
+    "codigo_produto": 314017,
+    "categoria": "camisa",
+    "tamanho": "M",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Nike",
+    "preco": 110.59
+    },
+    {
+    "codigo_produto": 998712,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Reserva",
+    "preco": 65.0
+    },
+    {
+    "codigo_produto": 783419,
+    "categoria": "camisa",
+    "tamanho": "G",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Calvin Klein",
+    "preco": 215.75
+    },
+    {
+    "codigo_produto": 484220,
+    "categoria": "calça",
+    "tamanho": "XGG",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Lacoste",
+    "preco": 275.95
+    },
+    {
+    "codigo_produto": 621488,
+    "categoria": "bermuda",
+    "tamanho": "GG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Zara",
+    "preco": 134.40
+    },
+    {
+    "codigo_produto": 862299,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Lacoste",
+    "preco": 75.30
+    },
+    {
+    "codigo_produto": 578291,
+    "categoria": "camisa",
+    "tamanho": "GG",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Reserva",
+    "preco": 189.99
+    },
+    {
+    "codigo_produto": 140134,
+    "categoria": "calça",
+    "tamanho": "G",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Nike",
+    "preco": 199.90
+    },
+    {
+    "codigo_produto": 312847,
+    "categoria": "bermuda",
+    "tamanho": "M",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Reserva",
+    "preco": 124.99
+    },
+    {
+    "codigo_produto": 456721,
+    "categoria": "camisa",
+    "tamanho": "XGG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Zara",
+    "preco": 229.90
+    },
+    {
+    "codigo_produto": 893721,
+    "categoria": "cueca",
+    "tamanho": "G",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Calvin Klein",
+    "preco": 59.90
+    },
+    {
+    "codigo_produto": 173924,
+    "categoria": "calça",
+    "tamanho": "GG",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Nike",
+    "preco": 349.99
+    },
+    {
+    "codigo_produto": 671392,
+    "categoria": "camisa",
+    "tamanho": "M",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Lacoste",
+    "preco": 310.00
+    },
+    {
+    "codigo_produto": 349018,
+    "categoria": "bermuda",
+    "tamanho": "GG",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Calvin Klein",
+    "preco": 199.50
+    },
+    {
+    "codigo_produto": 120837,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Zara",
+    "preco": 89.00
+    },
+    {
+    "codigo_produto": 789450,
+    "categoria": "calça",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Reserva",
+    "preco": 275.40
+    },
+    {
+    "codigo_produto": 562391,
+    "categoria": "camisa",
+    "tamanho": "G",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Nike",
+    "preco": 149.90
+    },
+    {
+    "codigo_produto": 938172,
+    "categoria": "cueca",
+    "tamanho": "GG",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Lacoste",
+    "preco": 72.99
+    },
+    {
+    "codigo_produto": 289113,
+    "categoria": "camisa",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Reserva",
+    "preco": 134.99
+    },
+    {
+    "codigo_produto": 410928,
+    "categoria": "calça",
+    "tamanho": "G",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Calvin Klein",
+    "preco": 259.90
+    },
+    {
+    "codigo_produto": 784921,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Nike",
+    "preco": 62.50
+    },
+    {
+    "codigo_produto": 390812,
+    "categoria": "bermuda",
+    "tamanho": "GG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Zara",
+    "preco": 147.00
+    },
+    {
+    "codigo_produto": 189023,
+    "categoria": "calça",
+    "tamanho": "XGG",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Lacoste",
+    "preco": 329.90
+    },
+    {
+    "codigo_produto": 601927,
+    "categoria": "camisa",
+    "tamanho": "M",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Zara",
+    "preco": 199.00
+    },
+    {
+    "codigo_produto": 391087,
+    "categoria": "cueca",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Reserva",
+    "preco": 79.90
+    },
+    {
+    "codigo_produto": 582190,
+    "categoria": "bermuda",
+    "tamanho": "M",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Nike",
+    "preco": 129.90
+    },
+    {
+    "codigo_produto": 721009,
+    "categoria": "camisa",
+    "tamanho": "GG",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Lacoste",
+    "preco": 289.00
+    },
+    {
+    "codigo_produto": 130928,
+    "categoria": "calça",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Reserva",
+    "preco": 239.50
+    },
+    {
+    "codigo_produto": 982310,
+    "categoria": "bermuda",
+    "tamanho": "GG",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Calvin Klein",
+    "preco": 199.90
+    },
+    {
+    "codigo_produto": 123456,
+    "categoria": "camisa",
+    "tamanho": "XGG",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Nike",
+    "preco": 299.99
+    },
+    {
+    "codigo_produto": 878120,
+    "categoria": "bermuda",
+    "tamanho": "G",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Lacoste",
+    "preco": 169.90
+    },
+    {
+    "codigo_produto": 998201,
+    "categoria": "camisa",
+    "tamanho": "P",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Zara",
+    "preco": 179.99
+    },
+    {
+    "codigo_produto": 409812,
+    "categoria": "cueca",
+    "tamanho": "XGG",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Calvin Klein",
+    "preco": 88.00
+    },
+    {
+    "codigo_produto": 762001,
+    "categoria": "calça",
+    "tamanho": "GG",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Nike",
+    "preco": 319.00
+    },
+    {
+    "codigo_produto": 821902,
+    "categoria": "camisa",
+    "tamanho": "M",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Reserva",
+    "preco": 204.70
+    },
+    {
+    "codigo_produto": 309812,
+    "categoria": "bermuda",
+    "tamanho": "XGG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Zara",
+    "preco": 157.45
+    },
+    {
+    "codigo_produto": 660192,
+    "categoria": "cueca",
+    "tamanho": "G",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Reserva",
+    "preco": 66.90
+    },
+    {
+    "codigo_produto": 419201,
+    "categoria": "camisa",
+    "tamanho": "GG",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Calvin Klein",
+    "preco": 225.00
+    },
+    {
+    "codigo_produto": 583920,
+    "categoria": "calça",
+    "tamanho": "M",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Lacoste",
+    "preco": 295.00
+    },
+    {
+    "codigo_produto": 729182,
+    "categoria": "cueca",
+    "tamanho": "P",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Nike",
+    "preco": 59.90
+    },
+    {
+    "codigo_produto": 924561,
+    "categoria": "bermuda",
+    "tamanho": "M",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Nike",
+    "preco": 129.99
+    },
+    {
+    "codigo_produto": 384927,
+    "categoria": "camisa",
+    "tamanho": "P",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Zara",
+    "preco": 199.50
+    },
+    {
+    "codigo_produto": 930182,
+    "categoria": "cueca",
+    "tamanho": "GG",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Reserva",
+    "preco": 80.99
+    },
+    {
+    "codigo_produto": 192847,
+    "categoria": "calça",
+    "tamanho": "GG",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Lacoste",
+    "preco": 399.99
+    },
+    {
+    "codigo_produto": 847102,
+    "categoria": "camisa",
+    "tamanho": "M",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Calvin Klein",
+    "preco": 269.90
+    },
+    {
+    "codigo_produto": 381902,
+    "categoria": "bermuda",
+    "tamanho": "GG",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Nike",
+    "preco": 199.00
+    },
+    {
+    "codigo_produto": 518392,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Lacoste",
+    "preco": 69.90
+    },
+    {
+    "codigo_produto": 201083,
+    "categoria": "calça",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Reserva",
+    "preco": 249.90
+    },
+    {
+    "codigo_produto": 912381,
+    "categoria": "camisa",
+    "tamanho": "GG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Zara",
+    "preco": 199.99
+    },
+    {
+    "codigo_produto": 183920,
+    "categoria": "cueca",
+    "tamanho": "G",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Calvin Klein",
+    "preco": 58.90
+    },
+    {
+    "codigo_produto": 730192,
+    "categoria": "camisa",
+    "tamanho": "G",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Nike",
+    "preco": 209.90
+    },
+    {
+    "codigo_produto": 814729,
+    "categoria": "calça",
+    "tamanho": "M",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Calvin Klein",
+    "preco": 279.00
+    },
+    {
+    "codigo_produto": 473829,
+    "categoria": "bermuda",
+    "tamanho": "XGG",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Reserva",
+    "preco": 159.90
+    },
+    {
+    "codigo_produto": 910273,
+    "categoria": "cueca",
+    "tamanho": "GG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Zara",
+    "preco": 74.50
+    },
+    {
+    "codigo_produto": 239487,
+    "categoria": "camisa",
+    "tamanho": "P",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Lacoste",
+    "preco": 289.90
+    },
+    {
+    "codigo_produto": 192034,
+    "categoria": "calça",
+    "tamanho": "G",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Zara",
+    "preco": 249.00
+    },
+    {
+    "codigo_produto": 573810,
+    "categoria": "bermuda",
+    "tamanho": "GG",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Nike",
+    "preco": 189.99
+    },
+    {
+    "codigo_produto": 902183,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Calvin Klein",
+    "preco": 85.00
+    },
+    {
+    "codigo_produto": 672019,
+    "categoria": "camisa",
+    "tamanho": "GG",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Reserva",
+    "preco": 194.90
+    },
+    {
+    "codigo_produto": 182930,
+    "categoria": "calça",
+    "tamanho": "XGG",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Nike",
+    "preco": 299.99
+    },
+    {
+    "codigo_produto": 491837,
+    "categoria": "cueca",
+    "tamanho": "G",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Lacoste",
+    "preco": 72.99
+    },
+    {
+    "codigo_produto": 839201,
+    "categoria": "camisa",
+    "tamanho": "M",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Zara",
+    "preco": 189.00
+    },
+    {
+    "codigo_produto": 920184,
+    "categoria": "calça",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Reserva",
+    "preco": 264.00
+    },
+    {
+    "codigo_produto": 710293,
+    "categoria": "bermuda",
+    "tamanho": "M",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Calvin Klein",
+    "preco": 149.90
+    },
+    {
+    "codigo_produto": 382019,
+    "categoria": "camisa",
+    "tamanho": "XGG",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Lacoste",
+    "preco": 299.99
+    },
+    {
+    "codigo_produto": 193820,
+    "categoria": "cueca",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Reserva",
+    "preco": 64.90
+    },
+    {
+    "codigo_produto": 812390,
+    "categoria": "calça",
+    "tamanho": "GG",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Nike",
+    "preco": 315.00
+    },
+    {
+    "codigo_produto": 384920,
+    "categoria": "bermuda",
+    "tamanho": "G",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Zara",
+    "preco": 172.90
+    },
+    {
+    "codigo_produto": 928374,
+    "categoria": "camisa",
+    "tamanho": "M",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Nike",
+    "preco": 210.00
+    },
+    {
+    "codigo_produto": 749201,
+    "categoria": "cueca",
+    "tamanho": "XGG",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Calvin Klein",
+    "preco": 79.90
+    },
+    {
+    "codigo_produto": 583910,
+    "categoria": "bermuda",
+    "tamanho": "GG",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Lacoste",
+    "preco": 199.90
+    },
+    {
+    "codigo_produto": 109283,
+    "categoria": "camisa",
+    "tamanho": "G",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Reserva",
+    "preco": 234.90
+    },
+    {
+    "codigo_produto": 284910,
+    "categoria": "calça",
+    "tamanho": "M",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Zara",
+    "preco": 269.00
+    },
+    {
+    "codigo_produto": 491028,
+    "categoria": "cueca",
+    "tamanho": "G",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Nike",
+    "preco": 62.00
+    },
+    {
+    "codigo_produto": 731920,
+    "categoria": "camisa",
+    "tamanho": "XGG",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Calvin Klein",
+    "preco": 219.90
+    },
+    {
+    "codigo_produto": 193874,
+    "categoria": "bermuda",
+    "tamanho": "P",
+    "marca": "Reserva",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Reserva",
+    "preco": 149.00
+    },
+    {
+    "codigo_produto": 382910,
+    "categoria": "cueca",
+    "tamanho": "M",
+    "marca": "Lacoste",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?cueca,masculino,Lacoste",
+    "preco": 84.90
+    },
+    {
+    "codigo_produto": 578210,
+    "categoria": "calça",
+    "tamanho": "G",
+    "marca": "Nike",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?calça,masculino,Nike",
+    "preco": 289.00
+    },
+    {
+    "codigo_produto": 849210,
+    "categoria": "camisa",
+    "tamanho": "GG",
+    "marca": "Zara",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?camisa,masculino,Zara",
+    "preco": 199.00
+    },
+    {
+    "codigo_produto": 472910,
+    "categoria": "bermuda",
+    "tamanho": "XGG",
+    "marca": "Calvin Klein",
+    "imagem_url": "https://source.unsplash.com/featured/300x300/?bermuda,masculino,Calvin Klein",
+    "preco": 189.90
+    }
+  ]
+  }
+}

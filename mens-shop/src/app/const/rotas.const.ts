@@ -3,5 +3,6 @@ export const ROTAS = {
   CADASTRESE: '/cadastre-se',
   HOME: '/',
   CARRINHO: '/carrinho',
-  CHECKOUT: '/finalizacao'
+  CHECKOUT: '/finalizacao',
+  MINHAS_COMPRAS: '/minhas-compras'
 }

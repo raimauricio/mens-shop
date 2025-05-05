@@ -8,6 +8,9 @@ import { PaymentComponent } from '../../components/payment/payment.component';
 import { ROTAS } from '../../const/rotas.const';
 import { JornadaServiceService } from '../../storage/jornada-service.service';
 import { Router } from '@angular/router';
+import { CompraService } from '../../services/compra/compra.service';
+import { ConfirmationService } from 'primeng/api';
+import { HttpClientModule } from '@angular/common/http';
 
 interface ICheckoutStep {
   nextStepLabel: string;
@@ -26,17 +29,23 @@ interface ICheckoutStep {
     ReactiveFormsModule,
     BasePageComponent,
     DeliveryComponent,
-    PaymentComponent
+    PaymentComponent,
+    HttpClientModule
   ],
   templateUrl: './checkout.component.html',
-  styleUrl: './checkout.component.scss'
+  styleUrl: './checkout.component.scss',
+  providers: [CompraService]
 })
 export class CheckoutComponent implements OnInit{
+  jornadaService = inject(JornadaServiceService);
+  router = inject(Router);
+  compraService = inject(CompraService);
+  confirmationService = inject(ConfirmationService);
   formaRecebimentoAdicionada = false;
   formaPagamentoAdicionada = false;
-  jornadaService = inject(JornadaServiceService);
+
   rotas = ROTAS;
-  router = inject(Router);
+
   stepCheckout = 1;
 
   ngOnInit(): void {
@@ -81,7 +90,32 @@ export class CheckoutComponent implements OnInit{
   }
 
   finalizarCompra() {
-    console.log('Compra finalizada!');
+    this.compraService.compra()
+      .subscribe(
+        {
+          next: (response) => {
+            this.confirmationService.confirm({
+              header: response.titulo,
+              message: response.mensagem,
+              acceptLabel: '  Acompanhar compra',
+              accept: () => { this.router.navigate([ROTAS.MINHAS_COMPRAS])},
+              rejectLabel: '  Voltar para loja',
+              reject: () => { this.router.navigate([ROTAS.HOME])}
+            });
+          },
+          error: () =>  {
+            this.confirmationService.confirm({
+              header: 'Não foi possível finalizar a compra.',
+              message: 'Erro durante a finalização da compra, por favor tente novamente mais tarde.',
+              acceptLabel: '  Tentar novamente',
+              accept: () => { setTimeout(() =>{ this.finalizarCompra() }, 1000)  },
+              rejectLabel: '  Voltar para loja',
+              reject: () => { this.router.navigate([ROTAS.HOME])}
+            });
+          }
+        }
+      );
+
   }
 
   validaUsuarioLogado() {

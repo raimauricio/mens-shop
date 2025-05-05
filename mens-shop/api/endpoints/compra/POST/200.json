@@ -1,0 +1,15 @@
+{
+  "request": {
+    "headers": [],
+    "query": [],
+    "params": {},
+    "body": {}
+  },
+  "response": {
+    "status": 200,
+    "data":{
+      "titulo": "Compra concluída.",
+      "mensagem": "Avalie o status da sua compra no nosso menu de Minhas compras."
+    }
+  }
+}
