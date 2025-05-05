@@ -7,7 +7,7 @@
   <div class="header-options">
     <ng-container *ngIf="!usuarioLogado; else menuUsuarioLogado">
       <i
-        class="pi pi-shopping-cart text-3xl mr-4"
+        class="carrinho pi pi-shopping-cart text-3xl mr-4"
         badgeClass="p-badge-contrast"
         pBadge
         [routerLink]="rotas.CARRINHO"
@@ -29,3 +29,4 @@
     </ng-template>
   </div>
 </header>
+<p-messages *ngIf="!usuarioLogado" [(value)]="logoffMensagem" [enableService]="false" />

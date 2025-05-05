@@ -19,7 +19,7 @@ export class HeaderComponent {
   itemsMenu: MenuItem[] = [
     {
       label: 'Minhas compras',
-      icon: 'pi pi-fw pi-home',
+      icon: 'pi pi-fw pi-shopping-bag',
       routerLink: ''
     },
     {
@@ -34,6 +34,7 @@ export class HeaderComponent {
       command: () => this.sair()
     }
   ];
+  logoffMensagem = [];
 
   get quantidadeItensCarrinho() {
     return this.jornadaStorage.getQuantidadeCarrinho();
@@ -48,6 +49,7 @@ export class HeaderComponent {
   }
 
   sair() {
+    this.logoffMensagem = [{severity: 'info', summary: 'Logoff realizado com sucesso! Realize o login para continuar as compras ou acompanhar os status.'}]
     this.jornadaStorage.sair();
   }
 }
