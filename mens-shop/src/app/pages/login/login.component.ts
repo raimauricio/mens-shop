@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { EntryPointComponent } from '../../components/entry-point/entry-point.component';
 import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../services/login/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationService } from 'primeng/api';
 import { IUser } from '../../interfaces/user.interface';

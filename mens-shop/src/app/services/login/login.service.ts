@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { PATHS_URL } from '../const/paths-url.const';
+import { PATHS_URL } from '../../const/paths-url.const';
 import { Observable } from 'rxjs';
-import { IUser } from '../interfaces/user.interface';
+import { IUser } from '../../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
