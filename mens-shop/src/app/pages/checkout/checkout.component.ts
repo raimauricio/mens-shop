@@ -65,7 +65,7 @@ export class CheckoutComponent implements OnInit{
         return {
           nextStepLabel: 'Finalizar compra',
           previousStepLabel: 'Revisar forma de pagamento',
-          validityCheck: true,
+          validityCheck: false,
           previousAction: () => this.stepCheckout = 2,
           nextAction: () => this.finalizarCompra()
         }
@@ -88,6 +88,7 @@ export class CheckoutComponent implements OnInit{
     if(!this.jornadaService.getEstaLogado() || this.jornadaService.getQuantidadeCarrinho() === 0) {
       this.router.navigate([this.rotas.LOGIN]);
     }
+    this.jornadaService.setAdicionarProdutosCompra();
   }
 
   recebeFormarecebimento(event: boolean) {

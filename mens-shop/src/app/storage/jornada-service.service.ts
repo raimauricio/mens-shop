@@ -3,14 +3,30 @@ import { BehaviorSubject } from 'rxjs';
 import { IProduct } from '../interfaces/product.interface';
 import { ICartao, IEndereco, IUser } from '../interfaces/user.interface';
 import { IItemCarrinho } from '../interfaces/product.interface';
+import { ICompra, ILoja, IPagamento, IRecebimento } from '../interfaces/compra.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JornadaServiceService {
+  estadoInicialCompra: ICompra = {
+    data: null,
+    produtos: null,
+    pagamento: {
+      formaPagamento: null,
+      valorTotal: null,
+      cartaoUsado: null,
+    },
+    recebimento: {
+      tipo: null,
+      enderecoEntrega: null,
+      retiradaLoja: null
+    }
+  }
   private estaLogado: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private itensCarrinho: BehaviorSubject<IProduct[]> = new BehaviorSubject([]);
-  private usuario: BehaviorSubject<IUser> = new BehaviorSubject(null);;
+  private usuario: BehaviorSubject<IUser> = new BehaviorSubject(null);
+  private compra: BehaviorSubject<ICompra> = new BehaviorSubject(this.estadoInicialCompra);
   concluirCompra: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   getItensCarrinho() {
@@ -89,6 +105,13 @@ export class JornadaServiceService {
     }
   }
 
+  setAdicionarProdutosCompra(){
+    const compra = this.estadoInicialCompra;
+    compra.produtos = this.itensCarrinho.getValue();
+    compra.pagamento.valorTotal = this.getValorTotalCompras();
+    this.compra.next(compra);
+  }
+
   getEnderecoCliente(): IEndereco[] {
     return this.usuario.value?.enderecos || null;
   }
@@ -101,10 +124,49 @@ export class JornadaServiceService {
     }
   }
 
+  adicionaRetiradaLoja(loja: ILoja){
+    const compra = this.compra.getValue();
+    compra.recebimento = {
+      tipo: 'retirada',
+      retiradaLoja: loja,
+      enderecoEntrega: null
+    }
+  }
+
+  adicionaEnderecoEntrega(endereco: IEndereco){
+    const compra = this.compra.getValue();
+    compra.recebimento = {
+      tipo: 'entrega',
+      retiradaLoja: null,
+      enderecoEntrega: endereco
+    }
+  }
+
+  adicionarFormaPagamento(formaPagamento: string, cartaoUsado?: ICartao){
+    const compra = this.compra.getValue();
+    const cartao = ['debito','credito'];
+
+    compra.pagamento = {
+      formaPagamento: formaPagamento,
+      valorTotal: this.getValorTotalCompras(),
+      cartaoUsado: cartao.includes(formaPagamento) ? cartaoUsado : null
+    }
+  }
+
+  getDadosResumoCompra(): { pagamento: IPagamento, recebimento: IRecebimento}{
+    const compra = this.compra.getValue();
+
+    return {
+      pagamento: compra.pagamento,
+      recebimento: compra.recebimento
+    }
+  }
+
   sair(){
     this.estaLogado.next(false);
     this.limparCarrinho();
     this.usuario.next(null);
+    this.compra.next(this.estadoInicialCompra);
   }
 
   limparCarrinho() {

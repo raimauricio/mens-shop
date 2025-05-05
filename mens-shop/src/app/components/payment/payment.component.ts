@@ -92,6 +92,7 @@ export class PaymentComponent {
         width: 256,
         margin: 2,
       });
+      this.jornadaService.adicionarFormaPagamento(this.metodoSelecionado);
       this.formaPagamentoAdicionada.emit(true);
     } catch (err) {
       this.confirmationService.confirm({
@@ -109,6 +110,7 @@ export class PaymentComponent {
 
   selecionarCartao(cartao: ICartao) {
     this.cartaoSelecionado = cartao;
+    this.jornadaService.adicionarFormaPagamento(this.metodoSelecionado, cartao);
     this.formaPagamentoAdicionada.emit(true);
   }
 
@@ -151,6 +153,7 @@ export class PaymentComponent {
         },
         rejectVisible: false,
       });
+      this.jornadaService.adicionarFormaPagamento(this.metodoSelecionado);
       this.formaPagamentoAdicionada.emit(true);
     }
   }

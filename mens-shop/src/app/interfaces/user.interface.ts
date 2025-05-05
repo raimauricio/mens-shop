@@ -1,3 +1,4 @@
+import { ICompra } from "./compra.interface";
 import { IProduct } from "./product.interface";
 
 export interface IUser {
@@ -27,13 +28,5 @@ export interface IEndereco {
   logradouro: string;
   numero: string;
   complemento?: string;
-}
-
-export interface ICompra {
-  data: string;
-  produtos: IProduct[];
-  valorTotal: number;
-  enderecoEntrega: IEndereco;
-  cartaoUsado: ICartao;
 }
 

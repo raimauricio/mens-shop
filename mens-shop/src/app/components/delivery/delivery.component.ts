@@ -3,6 +3,7 @@ import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JornadaServiceService } from '../../storage/jornada-service.service';
 import { IEndereco } from '../../interfaces/user.interface';
+import { ILoja } from '../../interfaces/compra.interface';
 
 @Component({
   selector: 'app-delivery',
@@ -25,7 +26,7 @@ export class DeliveryComponent {
     { id: 3, nome: 'Loja Rio de Janeiro', endereco: 'Av. Atlântica, 789' }
   ];
   metodoSelecionadao = null;
-  lojaSelecionada = null;
+  lojaSelecionada: ILoja = null;
   enderecoSelecionado: IEndereco = null;
   modalNovoEndereco = false;
   formNovoEndereco: FormGroup = this.formBuilder.group({
@@ -45,9 +46,9 @@ export class DeliveryComponent {
   cadastrarEndereco() {
     if(this.formNovoEndereco.valid) {
       this.jornadaStorage.setEnderecoCliente(this.formNovoEndereco.value);
+      this.selecionaEndereco(this.formNovoEndereco.value);
       this.modalNovoEndereco = false;
       this.formNovoEndereco.reset();
-      this.formaRecebimentoAdicionada.emit(true);
     }
   }
 
@@ -57,12 +58,12 @@ export class DeliveryComponent {
   }
 
   selecionaLoja() {
-    console.log(this.lojaSelecionada);
+    this.jornadaStorage.adicionaRetiradaLoja(this.lojaSelecionada);
     this.formaRecebimentoAdicionada.emit(true);
   }
 
   selecionaEndereco(endereco: IEndereco) {
-    console.log(endereco);
+    this.jornadaStorage.adicionaEnderecoEntrega(endereco)
     this.enderecoSelecionado = endereco;
     this.formaRecebimentoAdicionada.emit(true);
   }

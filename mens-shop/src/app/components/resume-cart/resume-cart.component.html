@@ -1,20 +1,49 @@
 <div class="mb-4">
-  <div
-    *ngFor="let item of carrinhoDeCompras"
-    class="flex justify-content-between align-items-center py-2 border-bottom-1 border-gray-200"
-  >
-    <div class="text-sm text-800">
-      {{ item.quantidade }}x {{ item.produto.nome }} - Tamanho: {{ item.tamanhoSelecionado }}
+  <div class="surface-card shadow-2 p-3 border-round mb-4 ">
+    <div
+      *ngFor="let item of carrinhoDeCompras"
+      class="flex justify-content-between align-items-center py-2 border-bottom-1 border-gray-200"
+    >
+      <div class="text-sm text-800">
+        {{ item.quantidade }}x {{ item.produto.nome }} - Tamanho: {{ item.tamanhoSelecionado }}
+      </div>
+      <div class="text-sm font-medium text-900">
+        {{ (item.produto.preco * item.quantidade) | currency:'BRL':'symbol':'1.2-2' }}
+      </div>
     </div>
-    <div class="text-sm font-medium text-900">
-      {{ (item.produto.preco * item.quantidade) | currency:'BRL':'symbol':'1.2-2' }}
+
+    <div class="flex justify-content-between align-items-center mt-3 pt-3 border-top-1 border-gray-300">
+      <span class="font-bold text-lg">Total</span>
+      <span class="font-bold text-lg text-primary">
+        {{ getTotal() | currency:'BRL':'symbol':'1.2-2' }}
+      </span>
     </div>
   </div>
 
-  <div class="flex justify-content-between align-items-center mt-3 pt-3 border-top-1 border-gray-300">
-    <span class="font-bold text-lg">Total</span>
-    <span class="font-bold text-lg text-primary">
-      {{ getTotal() | currency:'BRL':'symbol':'1.2-2' }}
-    </span>
-  </div>
+  <ng-container *ngIf="stepCheckout === 3">
+    <div class="surface-card shadow-2 p-3 border-round mb-4">
+      <div class="text-lg font-semibold mb-2">Forma de Pagamento</div>
+      <p> {{ dadosPagamento.formaPagamento.toUpperCase() }}
+        <span *ngIf="dadosPagamento.formaPagamento === 'debito' || dadosPagamento.formaPagamento === 'credito'">
+          Cartão Final: {{ dadosPagamento.cartaoUsado.numero.slice(-4)}} -
+          {{ dadosPagamento.cartaoUsado.nome }}
+        </span>
+      </p>
+    </div>
+
+    <div class="surface-card shadow-2 p-3 border-round mb-4">
+      <div class="text-lg font-semibold mb-2">Forma de Recebimento</div>
+      <p *ngIf="dadosRecebimento.tipo === 'retirada'">
+        Retirada em loja: <strong>{{ dadosRecebimento.retiradaLoja.nome }} - {{dadosRecebimento.retiradaLoja.endereco}} </strong>
+      </p>
+      <p *ngIf="dadosRecebimento.tipo === 'entrega'">
+        Entrega para: <strong>
+            {{ dadosRecebimento.enderecoEntrega.logradouro }}, {{ dadosRecebimento.enderecoEntrega.numero }} - {{ dadosRecebimento.enderecoEntrega.bairro }}
+            <br />
+            {{ dadosRecebimento.enderecoEntrega.cidade }}, {{ dadosRecebimento.enderecoEntrega.estado }} - {{ dadosRecebimento.enderecoEntrega.cep }}
+            <br />
+          </strong>
+      </p>
+    </div>
+  </ng-container>
 </div>
