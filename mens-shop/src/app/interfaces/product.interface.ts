@@ -6,11 +6,11 @@ export interface IProduct {
   preco: number;
   categoria: string;
   tamanhos: Array<number>;
-  tamanhoSelecionado?: { code: number, nome: string };
+  tamanhoSelecionado?: { code: string, name: string };
 }
 
 export interface IItemCarrinho {
   quantidade: number;
-  tamanhoSelecionado: number;
+  tamanhoSelecionado: string;
   produto: IProduct;
 }

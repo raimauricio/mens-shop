@@ -31,11 +31,12 @@ export class MyShoppingComponent implements OnInit{
       case 'Pagamento processado':
         return 'info';
       case 'Separando pedido':
-        return 'warning';
+      case 'Processando pagamento':
       case 'A caminho da entrega':
+        return 'warning';
       case 'Disponível para retirada':
-        return 'success';
       case 'Entregue':
+      case 'Retirado':
         return 'success';
       default:
         return 'info';

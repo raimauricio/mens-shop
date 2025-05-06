@@ -1,17 +1,21 @@
-import { IProduct } from "./product.interface";
-
 export interface IPedido {
   id: string;
-  dataCompra: Date;
+  dataCompra: string;
   valorTotal: number;
   statusAtual: string;
   tipoRecebimento
-  produtos: IProduct[];
+  produtos: IProduto[];
   etapas: IEtapa[];
 }
 
 export interface IEtapa{
   status: string;
-  data: Date;
+  data: string;
   icon: string;
+}
+
+interface IProduto{
+  nome: string;
+  tamanho: string;
+  preco: number;
 }

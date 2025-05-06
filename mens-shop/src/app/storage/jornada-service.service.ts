@@ -174,6 +174,36 @@ export class JornadaServiceService {
     this.compra.next(this.estadoInicialCompra);
   }
 
+  finalizarPedido(){
+    const comprasUsuario = this.usuario.getValue().minhasCompras;
+    const compra = this.compra.getValue();
+    compra.data = new Date(Date.now()).toISOString();
+    const pedido: IPedido = {
+      id: Math.floor(100000 + Math.random() * 900000).toString(),
+      dataCompra: compra.data,
+      produtos: compra.produtos.map(produto => {
+        console.log(produto.tamanhoSelecionado)
+        return {
+          nome: produto.nome,
+          preco: produto.preco,
+          tamanho: produto.tamanhoSelecionado.name
+        }
+      }),
+      statusAtual: 'Processando pagamento',
+      tipoRecebimento: compra.pagamento.formaPagamento === 'retirada' ? 'Retirada em loja' : 'Entrega',
+      valorTotal: this.getValorTotalCompras(),
+      etapas: [
+        {
+          data: new Date(Date.now()).toISOString(),
+          icon: "pi pi-credit-card",
+          status: 'Processando pagamento'
+        }
+      ]
+    }
+    comprasUsuario.unshift(pedido);
+    this.limparCarrinho();
+  }
+
   limparCarrinho() {
     this.itensCarrinho.next([]);
   }

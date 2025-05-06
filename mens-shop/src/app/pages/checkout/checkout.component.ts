@@ -94,6 +94,7 @@ export class CheckoutComponent implements OnInit{
       .subscribe(
         {
           next: (response) => {
+            this.jornadaService.finalizarPedido();
             this.confirmationService.confirm({
               header: response.titulo,
               message: response.mensagem,

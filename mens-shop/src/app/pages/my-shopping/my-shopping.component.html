@@ -23,8 +23,9 @@
           <div class="mb-3">
             <div class="text-lg font-semibold mb-2">Produtos</div>
             <div *ngFor="let produto of pedido.produtos" class="flex justify-between border-bottom-1 surface-border py-2">
-              <div>{{ produto.nome }} - Tam: {{ produto.tamanhoSelecionado }}</div>
-              <div class="font-medium">R${{ produto.preco.toFixed(2) }}</div>
+              <div>
+                {{ produto.nome }} - Tam: {{ produto.tamanho }} - R${{ produto.preco.toFixed(2) }}
+              </div>
             </div>
           </div>
           <div>

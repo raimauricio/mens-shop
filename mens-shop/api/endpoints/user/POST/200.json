@@ -38,7 +38,7 @@
           "dataCompra": "2025-05-01T10:30:00",
           "valorTotal": 250,
           "tipoRecebimento": "Entrega",
-          "statusAtual": "A caminho da entrega",
+          "statusAtual": "Entregue",
           "produtos": [
             { "nome": "Camiseta Polo Azul", "tamanho": "40", "preco": 100 },
             { "nome": "Camisa Listrada", "tamanho": "42", "preco": 150 }
