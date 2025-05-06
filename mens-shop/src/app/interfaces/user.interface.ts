@@ -1,4 +1,4 @@
-import { ICompra } from "./compra.interface";
+import { IPedido } from "./pedido.interface";
 import { IProduct } from "./product.interface";
 
 export interface IUser {
@@ -9,7 +9,7 @@ export interface IUser {
   telefone: string;
   cartoesCadastrados: ICartao[];
   enderecos: IEndereco[];
-  compras: ICompra[];
+  minhasCompras: IPedido[];
   carrinho: IProduct[];
 }
 

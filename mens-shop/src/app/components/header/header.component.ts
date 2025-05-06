@@ -20,12 +20,12 @@ export class HeaderComponent {
     {
       label: 'Minhas compras',
       icon: 'pi pi-fw pi-shopping-bag',
-      routerLink: ''
+      routerLink: this.rotas.MINHAS_COMPRAS
     },
     {
       label: 'Meu carrinho',
       icon: 'pi pi-fw pi-shopping-cart',
-      routerLink: '/carrinho',
+      routerLink: this.rotas.CARRINHO,
       badge: this.quantidadeItensCarrinho?.toString(),
     },
     {

@@ -32,10 +32,42 @@
           "estado": "SP"
         }
       ],
-      "compras": [],
+      "minhasCompras": [
+        {
+          "id": "123456",
+          "dataCompra": "2025-05-01T10:30:00",
+          "valorTotal": 250,
+          "tipoRecebimento": "Entrega",
+          "statusAtual": "A caminho da entrega",
+          "produtos": [
+            { "nome": "Camiseta Polo Azul", "tamanho": "40", "preco": 100 },
+            { "nome": "Camisa Listrada", "tamanho": "42", "preco": 150 }
+          ],
+          "etapas": [
+            {
+              "status": "Pagamento processado",
+              "data": "2025-05-01T10:30:00",
+              "icon": "pi pi-credit-card"
+            },
+            {
+              "status": "Separando pedido",
+              "data": "2025-05-01T12:00:00",
+              "icon": "pi pi-box"
+            },
+            {
+              "status": "A caminho da entrega",
+              "data": "2025-05-01T15:30:00",
+              "icon": "pi pi-truck"
+            },
+            {
+              "status": "Pedido entregue",
+              "data": "2025-05-01T15:30:00",
+              "icon": "pi pi-inbox"
+            }
+          ]
+        }
+      ],
       "carrinhos": []
-
-
     }
   }
 }

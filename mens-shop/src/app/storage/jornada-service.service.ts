@@ -4,6 +4,7 @@ import { IProduct } from '../interfaces/product.interface';
 import { ICartao, IEndereco, IUser } from '../interfaces/user.interface';
 import { IItemCarrinho } from '../interfaces/product.interface';
 import { ICompra, ILoja, IPagamento, IRecebimento } from '../interfaces/compra.interface';
+import { IPedido } from '../interfaces/pedido.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -160,6 +161,10 @@ export class JornadaServiceService {
       pagamento: compra.pagamento,
       recebimento: compra.recebimento
     }
+  }
+
+  getPedidosUsuario(): IPedido[]{
+      return this.usuario.getValue()?.minhasCompras ?? [];
   }
 
   sair(){

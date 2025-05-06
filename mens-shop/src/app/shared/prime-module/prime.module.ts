@@ -17,7 +17,9 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenuModule } from 'primeng/menu';
-import { MessagesModule } from 'primeng/messages'
+import { MessagesModule } from 'primeng/messages';
+import { TimelineModule } from 'primeng/timeline';
+import { AccordionModule } from 'primeng/accordion';
 import { MessageService, ConfirmationService } from 'primeng/api';
 
 @NgModule({
@@ -41,6 +43,8 @@ import { MessageService, ConfirmationService } from 'primeng/api';
     ConfirmDialogModule,
     MenuModule,
     MessagesModule,
+    AccordionModule,
+    TimelineModule
   ],
   exports: [
     CommonModule,
@@ -61,7 +65,9 @@ import { MessageService, ConfirmationService } from 'primeng/api';
     ToastModule,
     ConfirmDialogModule,
     MenuModule,
-    MessagesModule
+    MessagesModule,
+    AccordionModule,
+    TimelineModule
   ],
   providers: [
     MessageService,

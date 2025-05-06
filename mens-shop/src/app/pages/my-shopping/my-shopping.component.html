@@ -1,0 +1,56 @@
+<app-base-page>
+  <div class="p-4 min-h-screen">
+    <h2 class="text-2xl font-bold mb-4">Acompanhamento de Pedidos</h2>
+    <ng-container *ngIf="pedidos?.length; else semPedidos">
+      <p-accordion [multiple]="true">
+        <p-accordionTab *ngFor="let pedido of pedidos">
+          <ng-template pTemplate="header">
+            <div class="flex flex-column md:flex-row md:justify-between md:items-center gap-2">
+              <div>
+                <span class="font-semibold">Pedido #{{ pedido.id }}</span> -
+                {{ pedido.dataCompra | date: 'dd/MM/yyyy' }} |
+                {{ pedido.produtos.length }} {{ pedido.produtos.length > 1 ? 'itens' : 'item' }} -
+                R${{ pedido.valorTotal.toFixed(2) }} |
+                {{ pedido.tipoRecebimento }}
+              </div>
+              <p-tag
+                [value]="pedido.statusAtual"
+                [severity]="getStatusColor(pedido.statusAtual)"
+                class="text-sm"
+              ></p-tag>
+            </div>
+          </ng-template>
+          <div class="mb-3">
+            <div class="text-lg font-semibold mb-2">Produtos</div>
+            <div *ngFor="let produto of pedido.produtos" class="flex justify-between border-bottom-1 surface-border py-2">
+              <div>{{ produto.nome }} - Tam: {{ produto.tamanhoSelecionado }}</div>
+              <div class="font-medium">R${{ produto.preco.toFixed(2) }}</div>
+            </div>
+          </div>
+          <div>
+            <div class="text-lg font-semibold mb-2">Status do Pedido</div>
+            <p-timeline [value]="pedido.etapas" align="alternate" class="w-full">
+              <ng-template pTemplate="marker" let-etapa>
+                <i [class]="etapa.icon" class="text-primary text-xl"></i>
+              </ng-template>
+              <ng-template pTemplate="content" let-etapa>
+                <div class="mb-2">
+                  <span class="font-semibold">{{ etapa.status }}</span><br />
+                  <small class="text-color-secondary">{{ etapa.data |date: 'dd/MM/yyyy hh:mm' }}hs</small>
+                </div>
+              </ng-template>
+            </p-timeline>
+          </div>
+        </p-accordionTab>
+      </p-accordion>
+    </ng-container>
+
+    <ng-template #semPedidos>
+      <div class="text-center p-6 surface-100 border-round mt-5">
+        <i class="pi pi-hourglass text-4xl text-gray-400 mb-3"></i>
+        <p class="text-gray-500 text-lg">Sem pedidos até o momento !</p>
+      </div>
+    </ng-template>
+  </div>
+</app-base-page>
+
