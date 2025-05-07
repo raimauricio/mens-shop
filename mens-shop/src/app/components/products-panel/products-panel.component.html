@@ -1,5 +1,6 @@
 <div class="card">
   <p-carousel
+    *ngIf="products?.length; else nenhumProdutoEncontrado"
     [value]="products"
     [numVisible]="4"
     [numScroll]="4"
@@ -8,8 +9,7 @@
     styleClass="custom-carousel"
   >
     <ng-template let-product pTemplate="item">
-      <div class="border-1 surface-border border-round m-2 p-3 flex flex-column h-full">
-
+      <div style="max-width: 430px;" class="border-1 surface-border border-round m-2 p-3 flex flex-column h-full">
         <div class="mb-3">
           <div class="relative mx-auto">
             <img
@@ -63,4 +63,11 @@
       </div>
     </ng-template>
   </p-carousel>
+
+  <ng-template #nenhumProdutoEncontrado>
+    <div class="text-center p-6 surface-100 border-round mt-5">
+      <i class="pi pi-search text-4xl text-gray-400 mb-3"></i>
+      <p class="text-gray-500 text-lg">Nenhum produto encontrado.</p>
+    </div>
+  </ng-template>
 </div>
