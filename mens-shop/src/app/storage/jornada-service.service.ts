@@ -28,6 +28,7 @@ export class JornadaServiceService {
   private itensCarrinho: BehaviorSubject<IProduct[]> = new BehaviorSubject([]);
   private usuario: BehaviorSubject<IUser> = new BehaviorSubject(null);
   private compra: BehaviorSubject<ICompra> = new BehaviorSubject(this.estadoInicialCompra);
+  logoffMensagem:  BehaviorSubject<{severity: string, summary: string}[]> = new BehaviorSubject(null);
   concluirCompra: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   getItensCarrinho() {
@@ -43,6 +44,7 @@ export class JornadaServiceService {
   }
 
   setUser(user: IUser) {
+    this.logoffMensagem.next(null);
     this.usuario.next(user);
     this.estaLogado.next(true);
   }
@@ -172,6 +174,10 @@ export class JornadaServiceService {
     this.limparCarrinho();
     this.usuario.next(null);
     this.compra.next(this.estadoInicialCompra);
+    this.logoffMensagem.next([{severity: 'info', summary: 'Logoff realizado com sucesso! Realize o login para continuar as compras ou acompanhar os status.'}]);
+    setTimeout(() => {
+      this.logoffMensagem.next(null);
+    }, 5000)
   }
 
   finalizarPedido(){

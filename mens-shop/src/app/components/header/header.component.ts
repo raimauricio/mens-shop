@@ -34,7 +34,10 @@ export class HeaderComponent {
       command: () => this.sair()
     }
   ];
-  logoffMensagem = [];
+
+  get logoffMensagem (): {severity: string, summary: string}[]{
+    return this.jornadaStorage.logoffMensagem.getValue();
+  };
 
   get quantidadeItensCarrinho() {
     return this.jornadaStorage.getQuantidadeCarrinho();
@@ -49,7 +52,7 @@ export class HeaderComponent {
   }
 
   sair() {
-    this.logoffMensagem = [{severity: 'info', summary: 'Logoff realizado com sucesso! Realize o login para continuar as compras ou acompanhar os status.'}]
+    this.router.navigate([ROTAS.HOME]);
     this.jornadaStorage.sair();
   }
 }
