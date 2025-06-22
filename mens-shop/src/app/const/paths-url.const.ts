@@ -1,7 +1,7 @@
 export const PATHS_URL = {
-  LOGIN: 'http://localhost:8080/auth/login',
-  COMPRA: (id: number) =>  `http://localhost:8080/compra/${id}`,
-  PRODUCTS: 'http://localhost:8080/produtos',
-  REGISTRO: 'http://localhost:8080/auth/registro',
-  USUARIO: (id: number) => `http://localhost:8080/usuario/${id}`
+  LOGIN: 'https://mens-shop-api-production-9e78.up.railway.app/auth/login',
+  COMPRA: (id: number) =>  `https://mens-shop-api-production-9e78.up.railway.app/compra/${id}`,
+  PRODUCTS: 'https://mens-shop-api-production-9e78.up.railway.app/produtos',
+  REGISTRO: 'https://mens-shop-api-production-9e78.up.railway.app/auth/registro',
+  USUARIO: (id: number) => `https://mens-shop-api-production-9e78.up.railway.app/usuario/${id}`
 };
