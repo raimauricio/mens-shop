@@ -3,7 +3,7 @@ import { PrimeModule } from '../../shared/prime-module/prime.module';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JornadaServiceService } from '../../storage/jornada-service.service';
 import { IEndereco } from '../../interfaces/user.interface';
-import { ILoja } from '../../interfaces/compra.interface';
+import { Lojas } from '../../const/lojas.const';
 
 @Component({
   selector: 'app-delivery',
@@ -20,13 +20,9 @@ export class DeliveryComponent {
     { tipo: 'retirada', nome: 'Retirada em loja', icone: 'pi pi-shop' },
     { tipo: 'entrega', nome: 'Entrega', icone: 'pi pi-truck' }
   ];
-  lojas = [
-    { id: 1, nome: 'Loja Santos', endereco: 'Av. Ana Costa, 123' },
-    { id: 2, nome: 'Loja São Paulo', endereco: 'Av. Paulista, 456' },
-    { id: 3, nome: 'Loja Rio de Janeiro', endereco: 'Av. Atlântica, 789' }
-  ];
+  lojas = Lojas;
   metodoSelecionadao = null;
-  lojaSelecionada: ILoja = null;
+  lojaSelecionada = null;
   enderecoSelecionado: IEndereco = null;
   modalNovoEndereco = false;
   formNovoEndereco: FormGroup = this.formBuilder.group({
@@ -58,7 +54,7 @@ export class DeliveryComponent {
   }
 
   selecionaLoja() {
-    this.jornadaStorage.adicionaRetiradaLoja(this.lojaSelecionada);
+    this.jornadaStorage.adicionaRetiradaLoja(this.lojaSelecionada?.id);
     this.formaRecebimentoAdicionada.emit(true);
   }
 

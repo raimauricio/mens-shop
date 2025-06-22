@@ -3,24 +3,22 @@ import { BehaviorSubject } from 'rxjs';
 import { IProduct } from '../interfaces/product.interface';
 import { ICartao, IEndereco, IUser } from '../interfaces/user.interface';
 import { IItemCarrinho } from '../interfaces/product.interface';
-import { ICompra, ILoja, IPagamento, IRecebimento } from '../interfaces/compra.interface';
-import { IPedido } from '../interfaces/pedido.interface';
+import { ICompra, IPagamento, IProdutoComprado, IRecebimento } from '../interfaces/compra.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JornadaServiceService {
   estadoInicialCompra: ICompra = {
-    data: null,
-    produtos: null,
+    produtos: [],
     pagamento: {
-      formaPagamento: null,
+      tipo: null,
+      cartao: null,
       valorTotal: null,
-      cartaoUsado: null,
     },
     recebimento: {
       tipo: null,
-      enderecoEntrega: null,
+      endereco: null,
       retiradaLoja: null
     }
   }
@@ -53,6 +51,14 @@ export class JornadaServiceService {
     this.incluirCarrinhoUsuario(user.carrinho);
   }
 
+  getTokenUsuario() {
+    return this.tokenUsuario.getValue();
+  }
+
+  getCompra() {
+    return this.compra.getValue();
+  }
+
   incluirCarrinhoUsuario(carrinho: IItemCarrinho[]) {
     if(carrinho?.length > 0) {
       const produtos: IProduct[] = [];
@@ -69,7 +75,6 @@ export class JornadaServiceService {
       });
       this.itensCarrinho.getValue().push(...produtos);
     }
-
   }
 
   getQuantidadeCarrinho() {
@@ -132,8 +137,18 @@ export class JornadaServiceService {
   }
 
   setAdicionarProdutosCompra(){
+    const produtosComprados: IProdutoComprado[] = this.getMontaCarrinho()
+      .map(item => (
+        {
+          produtoId: item.produto.id,
+          quantidade: item.quantidade,
+          tamanhoSelecionado: item.tamanhoSelecionado
+        } as unknown as IProdutoComprado
+      )
+    );
+
     const compra = this.estadoInicialCompra;
-    compra.produtos = this.itensCarrinho.getValue();
+    compra.produtos = produtosComprados;
     compra.pagamento.valorTotal = this.getValorTotalCompras();
     this.compra.next(compra);
   }
@@ -150,12 +165,12 @@ export class JornadaServiceService {
     }
   }
 
-  adicionaRetiradaLoja(loja: ILoja){
+  adicionaRetiradaLoja(loja: number = null){
     const compra = this.compra.getValue();
     compra.recebimento = {
       tipo: 'retirada',
       retiradaLoja: loja,
-      enderecoEntrega: null
+      endereco: null
     }
   }
 
@@ -164,7 +179,7 @@ export class JornadaServiceService {
     compra.recebimento = {
       tipo: 'entrega',
       retiradaLoja: null,
-      enderecoEntrega: endereco
+      endereco: endereco
     }
   }
 
@@ -173,15 +188,14 @@ export class JornadaServiceService {
     const cartao = ['debito','credito'];
 
     compra.pagamento = {
-      formaPagamento: formaPagamento,
+      tipo: formaPagamento,
       valorTotal: this.getValorTotalCompras(),
-      cartaoUsado: cartao.includes(formaPagamento) ? cartaoUsado : null
+      cartao: cartao.includes(formaPagamento) ? cartaoUsado : null
     }
   }
 
   getDadosResumoCompra(): { pagamento: IPagamento, recebimento: IRecebimento}{
     const compra = this.compra.getValue();
-
     return {
       pagamento: compra.pagamento,
       recebimento: compra.recebimento
@@ -201,30 +215,6 @@ export class JornadaServiceService {
   }
 
   finalizarPedido(){
-    const compra = this.compra.getValue();
-    compra.data = new Date(Date.now()).toISOString();
-    const pedido: IPedido = {
-      id: Math.floor(100000 + Math.random() * 900000).toString(),
-      dataCompra: compra.data,
-      produtos: compra.produtos.map(produto => {
-        console.log(produto.tamanhoSelecionado)
-        return {
-          nome: produto.nome,
-          preco: produto.preco,
-          tamanho: produto.tamanhoSelecionado.name
-        }
-      }),
-      statusAtual: 'Processando pagamento',
-      tipoRecebimento: compra.pagamento.formaPagamento === 'retirada' ? 'Retirada em loja' : 'Entrega',
-      valorTotal: this.getValorTotalCompras(),
-      etapas: [
-        {
-          data: new Date(Date.now()).toISOString(),
-          icon: "pi pi-credit-card",
-          status: 'Processando pagamento'
-        }
-      ]
-    }
     this.limparCarrinho();
   }
 

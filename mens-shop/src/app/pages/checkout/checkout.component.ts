@@ -96,8 +96,8 @@ export class CheckoutComponent implements OnInit{
           next: (response) => {
             this.jornadaService.finalizarPedido();
             this.confirmationService.confirm({
-              header: response.titulo,
-              message: response.mensagem,
+              header: response?.titulo ?? 'Compra concluída.',
+              message: response?.mensagem ?? "Acompanhe o status da sua compra no nosso menu de Minhas compras.",
               acceptLabel: '  Acompanhar compra',
               accept: () => { this.router.navigate([ROTAS.MINHAS_COMPRAS])},
               rejectLabel: '  Voltar para loja',

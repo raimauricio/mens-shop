@@ -2,26 +2,25 @@ import { IProduct } from "./product.interface";
 import { ICartao, IEndereco } from "./user.interface";
 
 export interface ICompra {
-  data: string;
-  produtos: IProduct[];
+  produtos: IProdutoComprado[];
   pagamento: IPagamento;
   recebimento:IRecebimento;
 }
 
 export interface IRecebimento{
   tipo: string;
-  enderecoEntrega?: IEndereco;
-  retiradaLoja?: ILoja;
+  endereco?: IEndereco;
+  retiradaLoja?: number;
 }
 
 export interface IPagamento {
+  tipo: string;
   valorTotal: number;
-  formaPagamento: string;
-  cartaoUsado?: ICartao;
+  cartao?: ICartao;
 }
 
-export interface ILoja{
-  id: string;
-  nome: string;
-  endereco: string;
+export interface IProdutoComprado {
+  produtoId: IProduct;
+  quantidade: number;
+  tamanhoSelecionado: String
 }

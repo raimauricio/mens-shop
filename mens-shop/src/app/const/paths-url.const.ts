@@ -1,5 +1,5 @@
 export const PATHS_URL = {
   LOGIN: 'http://localhost:8080/auth/login',
-  COMPRA: 'http://localhost:3000/api/compra',
+  COMPRA: (id: number) =>  `http://localhost:8080/compra/${id}`,
   PRODUCTS: 'http://localhost:8080/produtos'
 }

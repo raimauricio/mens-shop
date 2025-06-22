@@ -23,10 +23,10 @@
   <ng-container *ngIf="stepCheckout === 3">
     <div class="surface-card shadow-2 p-3 border-round mb-4">
       <div class="text-lg font-semibold mb-2">Forma de Pagamento</div>
-      <p> {{ dadosPagamento.formaPagamento.toUpperCase() }}
-        <span *ngIf="dadosPagamento.formaPagamento === 'debito' || dadosPagamento.formaPagamento === 'credito'">
-          Cartão Final: {{ dadosPagamento.cartaoUsado.numero.slice(-4)}} -
-          {{ dadosPagamento.cartaoUsado.nome }}
+      <p> {{ dadosPagamento.tipo.toUpperCase() }}
+        <span *ngIf="dadosPagamento.tipo === 'debito' || dadosPagamento.tipo === 'credito'">
+          Cartão Final: {{ dadosPagamento.cartao.numero.slice(-4)}} -
+          {{ dadosPagamento.cartao.nome }}
         </span>
       </p>
     </div>
@@ -34,13 +34,13 @@
     <div class="surface-card shadow-2 p-3 border-round mb-4">
       <div class="text-lg font-semibold mb-2">Forma de Recebimento</div>
       <p *ngIf="dadosRecebimento.tipo === 'retirada'">
-        Retirada em loja: <strong>{{ dadosRecebimento.retiradaLoja.nome }} - {{dadosRecebimento.retiradaLoja.endereco}} </strong>
+        Retirada em loja: <strong>{{ loja.nome }} - {{ loja.endereco }} </strong>
       </p>
       <p *ngIf="dadosRecebimento.tipo === 'entrega'">
         Entrega para: <strong>
-            {{ dadosRecebimento.enderecoEntrega.logradouro }}, {{ dadosRecebimento.enderecoEntrega.numero }} - {{ dadosRecebimento.enderecoEntrega.bairro }}
+            {{ dadosRecebimento.endereco.logradouro }}, {{ dadosRecebimento.endereco.numero }} - {{ dadosRecebimento.endereco.bairro }}
             <br />
-            {{ dadosRecebimento.enderecoEntrega.cidade }}, {{ dadosRecebimento.enderecoEntrega.estado }} - {{ dadosRecebimento.enderecoEntrega.cep }}
+            {{ dadosRecebimento.endereco.cidade }}, {{ dadosRecebimento.endereco.estado }} - {{ dadosRecebimento.endereco.cep }}
             <br />
           </strong>
       </p>
