@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ROTAS } from '../../const/rotas.const';
 import { CompraService } from '../../services/compra/compra.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Lojas } from '../../const/lojas.const';
 
 @Component({
   selector: 'app-my-shopping',
@@ -21,6 +22,10 @@ export class MyShoppingComponent implements OnInit{
   compraService = inject(CompraService);
   router = inject(Router);
   pedidos: IPedido[] = [];
+
+  getLocalRetirada(local: string): string {
+    return Lojas.find(loja => loja.id === Number(local))?.nome || local;
+  }
 
   ngOnInit(): void {
     if(!this.jornadaStorage.getEstaLogado())

@@ -11,7 +11,7 @@
                 {{ pedido.dataCompra | date: 'dd/MM/yyyy' }} |
                 {{ pedido.produtos.length }} {{ pedido.produtos.length > 1 ? 'itens' : 'item' }} -
                 R${{ pedido.valorTotal.toFixed(2) }} |
-                {{ pedido.tipoRecebimento }}
+                {{ getLocalRetirada(pedido.tipoRecebimento) }}
               </div>
               <p-tag
                 [value]="pedido.statusAtual"

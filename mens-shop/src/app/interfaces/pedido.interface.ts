@@ -3,7 +3,7 @@ export interface IPedido {
   dataCompra: string;
   valorTotal: number;
   statusAtual: string;
-  tipoRecebimento
+  tipoRecebimento: string;
   produtos: IProduto[];
   etapas: IEtapa[];
 }
