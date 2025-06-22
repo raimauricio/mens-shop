@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit{
     this.productService.getProdutos().subscribe({
       next: (response) => {
         this.products = response;
+        this.jornadaService.produtosDisponiveis = this.products;
         this.produtosFiltrados = [...this.products]
       }
     });

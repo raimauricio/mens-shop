@@ -31,6 +31,7 @@ export class JornadaServiceService {
   private compra: BehaviorSubject<ICompra> = new BehaviorSubject(this.estadoInicialCompra);
   logoffMensagem:  BehaviorSubject<{severity: string, summary: string}[]> = new BehaviorSubject(null);
   concluirCompra: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  produtosDisponiveis: IProduct[] = [];
 
   getItensCarrinho() {
     return this.itensCarrinho.getValue();
@@ -49,6 +50,26 @@ export class JornadaServiceService {
     this.usuario.next(user);
     this.estaLogado.next(true);
     this.tokenUsuario.next(token);
+    this.incluirCarrinhoUsuario(user.carrinho);
+  }
+
+  incluirCarrinhoUsuario(carrinho: IItemCarrinho[]) {
+    if(carrinho?.length > 0) {
+      const produtos: IProduct[] = [];
+      carrinho.forEach(item => {
+        const produto = this.produtosDisponiveis.find(produto => produto.id === item.produto.id);
+        if(produto) {
+            for (let i = 0; i < item.quantidade; i++) {
+              produtos.push({
+              ...produto,
+              tamanhoSelecionado: {code: item.tamanhoSelecionado, name: item.tamanhoSelecionado}
+            });
+          }
+        }
+      });
+      this.itensCarrinho.getValue().push(...produtos);
+    }
+
   }
 
   getQuantidadeCarrinho() {
