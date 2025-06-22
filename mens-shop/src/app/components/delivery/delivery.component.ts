@@ -42,7 +42,7 @@ export class DeliveryComponent {
   cadastrarEndereco() {
     if(this.formNovoEndereco.valid) {
       this.jornadaStorage.setEnderecoCliente(this.formNovoEndereco.value);
-      this.selecionaEndereco(this.formNovoEndereco.value);
+      this.selecionaEndereco({...this.formNovoEndereco.value, id: 0});
       this.modalNovoEndereco = false;
       this.formNovoEndereco.reset();
     }

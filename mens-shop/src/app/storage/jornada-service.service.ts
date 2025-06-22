@@ -208,7 +208,6 @@ export class JornadaServiceService {
     this.usuario.next(null);
     this.tokenUsuario.next(null);
     this.compra.next(this.estadoInicialCompra);
-    this.logoffMensagem.next([{severity: 'info', summary: 'Logoff realizado com sucesso! Realize o login para continuar as compras ou acompanhar os status.'}]);
     setTimeout(() => {
       this.logoffMensagem.next(null);
     }, 5000)

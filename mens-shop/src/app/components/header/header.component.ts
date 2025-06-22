@@ -4,18 +4,23 @@ import { JornadaServiceService } from '../../storage/jornada-service.service';
 import { MenuItem } from 'primeng/api';
 import { ROTAS } from '../../const/rotas.const';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../services/usuario/usuario.service';
+import { HttpClientModule } from '@angular/common/http';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [PrimeModule],
+  imports: [PrimeModule, HttpClientModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  providers: [UsuarioService]
 })
 export class HeaderComponent {
   rotas = ROTAS;
   router = inject(Router);
   jornadaStorage = inject(JornadaServiceService);
+  usuarioService = inject(UsuarioService);
   itemsMenu: MenuItem[] = [
     {
       label: 'Minhas compras',
@@ -52,7 +57,41 @@ export class HeaderComponent {
   }
 
   sair() {
-    this.router.navigate([ROTAS.HOME]);
-    this.jornadaStorage.sair();
+    const requestBody = {
+      endereco: this.jornadaStorage.getCompra()?.recebimento?.endereco ?? null,
+      cartao:  this.jornadaStorage.getCompra()?.pagamento?.cartao ?? null,
+      carrinho: this.jornadaStorage.getItensCarrinho()?.length ? this.jornadaStorage.getMontaCarrinho().map(item => ({
+        produtoId: item?.produto.id,
+        quantidade: item?.quantidade,
+        tamanhoSelecionado: item?.tamanhoSelecionado,
+      })) : null,
+    }
+    this.usuarioService.atualizarUsuario(requestBody)
+      .pipe(
+        finalize(() => {
+          this.router.navigate([ROTAS.HOME]);
+          this.jornadaStorage.sair();
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.jornadaStorage
+            .logoffMensagem.next([
+              {
+                severity: 'info',
+                summary: 'Logoff realizado com sucesso! Realize o login para continuar as compras ou acompanhar os status.'
+              }
+            ]);
+        },
+        error: () => {
+          this.jornadaStorage
+            .logoffMensagem.next([
+              {
+                severity: 'info',
+                summary: 'Nao foi possível atualizar as suas informações! Realize o login para continuar as compras ou acompanhar os status.'
+              }
+            ]);
+        }
+      });
   }
 }
