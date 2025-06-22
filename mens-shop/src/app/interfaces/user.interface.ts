@@ -1,5 +1,4 @@
-import { IPedido } from "./pedido.interface";
-import { IProduct } from "./product.interface";
+import { IItemCarrinho } from "./product.interface";
 
 export interface IUser {
   id: number;
@@ -7,20 +6,21 @@ export interface IUser {
   sobrenome: string;
   email: string;
   telefone: string;
-  cartoesCadastrados: ICartao[];
+  cartoes: ICartao[];
   enderecos: IEndereco[];
-  minhasCompras: IPedido[];
-  carrinho: IProduct[];
+  carrinho: IItemCarrinho[];
 }
 
 export interface ICartao {
+  id: number;
   numero: string;
   nome: string;
-  validade: string;
-  cvv: string;
+  dataValidade: string;
+  codigoSeguranca: string;
 }
 
 export interface IEndereco {
+  id: number;
   cep: string;
   estado: string;
   cidade: string;

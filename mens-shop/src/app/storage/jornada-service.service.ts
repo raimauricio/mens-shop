@@ -27,6 +27,7 @@ export class JornadaServiceService {
   private estaLogado: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private itensCarrinho: BehaviorSubject<IProduct[]> = new BehaviorSubject([]);
   private usuario: BehaviorSubject<IUser> = new BehaviorSubject(null);
+  private tokenUsuario: BehaviorSubject<string> = new BehaviorSubject(null);
   private compra: BehaviorSubject<ICompra> = new BehaviorSubject(this.estadoInicialCompra);
   logoffMensagem:  BehaviorSubject<{severity: string, summary: string}[]> = new BehaviorSubject(null);
   concluirCompra: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -43,10 +44,11 @@ export class JornadaServiceService {
     return this.usuario.getValue();
   }
 
-  setUser(user: IUser) {
+  setUser(user: IUser, token: string) {
     this.logoffMensagem.next(null);
     this.usuario.next(user);
     this.estaLogado.next(true);
+    this.tokenUsuario.next(token);
   }
 
   getQuantidadeCarrinho() {
@@ -97,13 +99,13 @@ export class JornadaServiceService {
   }
 
   getCartoesCadastrados(): ICartao[] {
-    return this.usuario.value?.cartoesCadastrados || null;
+    return this.usuario.value?.cartoes || null;
   }
 
   adicionarCartao(cartao: ICartao) {
     const usuario = this.usuario.getValue();
     if(usuario) {
-      usuario.cartoesCadastrados.push(cartao);
+      usuario.cartoes.push(cartao);
       this.usuario.next(usuario);
     }
   }
@@ -165,14 +167,11 @@ export class JornadaServiceService {
     }
   }
 
-  getPedidosUsuario(): IPedido[]{
-      return this.usuario.getValue()?.minhasCompras ?? [];
-  }
-
   sair(){
     this.estaLogado.next(false);
     this.limparCarrinho();
     this.usuario.next(null);
+    this.tokenUsuario.next(null);
     this.compra.next(this.estadoInicialCompra);
     this.logoffMensagem.next([{severity: 'info', summary: 'Logoff realizado com sucesso! Realize o login para continuar as compras ou acompanhar os status.'}]);
     setTimeout(() => {
@@ -181,7 +180,6 @@ export class JornadaServiceService {
   }
 
   finalizarPedido(){
-    const comprasUsuario = this.usuario.getValue().minhasCompras;
     const compra = this.compra.getValue();
     compra.data = new Date(Date.now()).toISOString();
     const pedido: IPedido = {
@@ -206,7 +204,6 @@ export class JornadaServiceService {
         }
       ]
     }
-    comprasUsuario.unshift(pedido);
     this.limparCarrinho();
   }
 

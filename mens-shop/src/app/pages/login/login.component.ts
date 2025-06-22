@@ -34,28 +34,33 @@ export class LoginComponent {
 
   entrar(){
     if (this.formLogin.valid){
-      this.loginService.login()
-        .subscribe({
-          next: (response: IUser) => {
-            this.jornadaService.setUser(response);
+      this.loginService.login(
+        this.formLogin.get('email')?.value,
+        this.formLogin.get('senha')?.value
+      ).subscribe(
+        response => {
+          if (response.status === 200) {
+            const token = response.headers.get('Authorization');
+            this.jornadaService.setUser(response.body as IUser, token);
             this.jornadaService.concluirCompra.getValue() ?
-             this.route.navigate([ROTAS.CHECKOUT]) : this.route.navigate([ROTAS.HOME]);
+            this.route.navigate([ROTAS.CHECKOUT]) : this.route.navigate([ROTAS.HOME]);
             this.jornadaService.concluirCompra.next(false);
-          },
-          error: (err) => {
-            this.notification.confirm({
-              message: 'Erro ao realizar login, tente novamente!',
-              header: 'Erro',
-              icon: 'pi pi-exclamation-triangle',
-              acceptLabel: 'Ok',
-              accept: () => {
-                this.enviarLink = false;
-                this.esqueciSenha = false;
-              },
-              rejectVisible: false,
-            });
           }
-        });
+        },
+        error => {
+          this.notification.confirm({
+            message: error?.error?.mensagem || 'Erro ao realizar login',
+            header: error?.error?.titulo || 'Erro',
+            icon: 'pi pi-exclamation-triangle',
+            acceptLabel: 'Ok',
+            accept: () => {
+              this.enviarLink = false;
+              this.esqueciSenha = false;
+            },
+            rejectVisible: false,
+          });
+        }
+      );
     } else this.alertaFormularioInvalido();
   }
 

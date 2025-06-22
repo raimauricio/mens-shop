@@ -117,10 +117,11 @@ export class PaymentComponent {
   salvarNovoCartao() {
     if (this.formCartao.valid) {
       const cartao: ICartao = {
+        id: 0,
         nome: this.formCartao.value.nomeTitular,
         numero: this.formCartao.value.numeroCartao,
-        validade: this.formCartao.value.validade,
-        cvv: this.formCartao.value.cvv,
+        dataValidade: this.formCartao.value.validade,
+        codigoSeguranca: this.formCartao.value.cvv,
       };
       this.jornadaService.adicionarCartao(cartao);
       this.modalCartaoAberto = false;

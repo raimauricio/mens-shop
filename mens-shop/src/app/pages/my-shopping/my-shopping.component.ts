@@ -16,14 +16,11 @@ import { ROTAS } from '../../const/rotas.const';
 export class MyShoppingComponent implements OnInit{
   jornadaStorage = inject(JornadaServiceService);
   router = inject(Router);
+  pedidos = [];
 
   ngOnInit(): void {
     if(!this.jornadaStorage.getEstaLogado())
       this.router.navigate([ROTAS.HOME]);
-  }
-
-  get pedidos(): IPedido[]{
-    return this.jornadaStorage.getPedidosUsuario();
   }
 
   getStatusColor(status: string): 'info' | 'success' | 'warning' | 'danger' {
