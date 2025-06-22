@@ -37,7 +37,7 @@
       <label for="termos" class="ml-2">Aceito os termos e condições  <a class="text-primary cursor-pointer" [routerLink]="rotas.CADASTRESE">Termos e Condições</a></label>
     </div>
 
-    <button [disabled]="formCadastro.invalid || !aceitouTermos" pButton type="submit" label="Cadastrar" class="w-full mt-2"></button>
+    <button [disabled]="!cadastroValido()" pButton type="submit" label="Cadastrar" class="w-full mt-2"></button>
   </form>
 
   <div class="text-center mt-4 text-600">

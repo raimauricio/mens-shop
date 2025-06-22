@@ -5,13 +5,16 @@ import { ROTAS } from '../../const/rotas.const';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConfirmationService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RegistroService } from '../../services/registro/registro.service';
 
 @Component({
   selector: 'app-cadastre',
   standalone: true,
-  imports: [EntryPointComponent, FormsModule, PrimeModule, ReactiveFormsModule],
+  imports: [EntryPointComponent, FormsModule, PrimeModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './cadastre.component.html',
-  styleUrl: './cadastre.component.scss'
+  styleUrl: './cadastre.component.scss',
+  providers: [RegistroService]
 })
 export class CadastreComponent {
   rotas = ROTAS;
@@ -19,6 +22,7 @@ export class CadastreComponent {
   formBuilder = inject(FormBuilder);
   confirmationService = inject(ConfirmationService);
   router = inject(Router);
+  registroService = inject(RegistroService);
 
   get aceitouTermos(): boolean{
     return this.formCadastro.get('termos').value;
@@ -40,12 +44,35 @@ export class CadastreComponent {
   }
 
   cadastrese() {
-    this.confirmationService.confirm({
-      rejectVisible: false,
-      acceptLabel: 'Ok',
-      header: this.cadastroValido() ? 'Cadastro realizado.' : 'Erro ao cadastrar',
-      message:  this.cadastroValido() ? 'Cadastro realizado com sucesso realizae o login para continuar com as compras.' : 'Erro ao realizar o cadastro valide os dados e tente novamente',
-      accept: this.cadastroValido() ? () => this.router.navigate([this.rotas.LOGIN]) : () => {return}
+    const form = this.formCadastro.value;
+    if(!this.cadastroValido()) return;
+    this.registroService.registrar(
+      {
+        nome: form.nome,
+        sobrenome: form.sobrenome,
+        email: form.email,
+        senha: form.senha,
+        telefone: form.telefone
+      }
+    ).subscribe({
+      next: () => {
+        this.confirmationService.confirm({
+          rejectVisible: false,
+          acceptLabel: 'Ok',
+          header: 'Cadastro realizado.',
+          message: 'Cadastro realizado com sucesso, realize o login para continuar com as compras.',
+          accept: () => this.router.navigate([this.rotas.LOGIN])
+        });
+      },
+      error: (error) => {
+        this.confirmationService.confirm({
+          rejectVisible: false,
+          acceptLabel: 'Ok',
+          header: 'Erro ao cadastrar',
+          message: 'Erro ao realizar o cadastro, valide os dados e tente novamente.',
+          accept: () => { return; }
+        });
+      }
     });
   }
 }
