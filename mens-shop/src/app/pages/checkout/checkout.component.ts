@@ -90,7 +90,7 @@ export class CheckoutComponent implements OnInit{
   }
 
   finalizarCompra() {
-    this.compraService.compra()
+    this.compraService.relizarCompra()
       .subscribe(
         {
           next: (response) => {

@@ -11,8 +11,8 @@ export class CompraService {
   httpService = inject(HttpClient);
   jornadaService = inject(JornadaServiceService);
 
-  compra(): Observable<any> {
-    const headers = [
+  get headers() {
+    return [
       {
         name: 'Authorization',
         value: `${this.jornadaService.getTokenUsuario()}`
@@ -22,12 +22,30 @@ export class CompraService {
         value: 'application/json'
       }
     ]
+  }
 
+  get pathCompra() {
+    return PATHS_URL.COMPRA(this.jornadaService.getUser().id);
+  }
+
+  relizarCompra(): Observable<any> {
     return this.httpService.post(
-      PATHS_URL.COMPRA(this.jornadaService.getUser().id),
+      this.pathCompra,
       this.jornadaService.getCompra(),
       {
-        headers: headers.reduce((acc, header) => {
+        headers: this.headers.reduce((acc, header) => {
+          acc[header.name] = header.value;
+          return acc;
+        }, {})
+      }
+    );
+  }
+
+  minhasCompras(): Observable<any> {
+    return this.httpService.get(
+       this.pathCompra,
+      {
+        headers: this.headers.reduce((acc, header) => {
           acc[header.name] = header.value;
           return acc;
         }, {})
